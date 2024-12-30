@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,3 +19,39 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+* ,*::before,*::after {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Poppins, sans-serif !important;
+  margin: 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
+body button{
+  font-family: Poppins, sans-serif !important;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 1);
+}
+form input, form textarea{
+  font-family: Poppins, sans-serif !important;
+}
+body img{
+  font-family: Poppins, sans-serif !important;
+}
+ul{
+  padding-inline-start: 0;  
+}
+ul li{
+  list-style-type: none;
+}
+a {text-decoration: none;}
+.container{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+}
+
+
