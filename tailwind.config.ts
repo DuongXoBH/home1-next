@@ -25,7 +25,8 @@ export default {
       },
       listStyleImage :{
         'footer-list-icon': "url(/images/vector.svg)"
-      },
+      }, 
+      scrollBehavior: ['smooth'],
     },
   },
   plugins: [],

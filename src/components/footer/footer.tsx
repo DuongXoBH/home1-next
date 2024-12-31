@@ -54,12 +54,12 @@ const FooterComponent=()=>{
             © AltDesain Studio 2021 - All right reserved.
           </div>
         </div>
-        <a href="#top">
+        <a href="#top" className="transition-all duration-300">
           <Image
             src="/images/to-top-button.svg"
-            className="absolute w-9 h-9 right-[-85px] bottom-[81px] "
-            width={7}
-            height={7}
+            className="absolute right-[-85px] bottom-[83px] "
+            width={36}
+            height={36}
             alt=""
           />
         </a>
