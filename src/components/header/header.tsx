@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Nav from "./components/nav";
 
 function HeaderComponent() {
@@ -10,7 +11,7 @@ function HeaderComponent() {
           id="top"
         >
           <div className="flex justify-between items-center gap-x-[18px]">
-            <img src="/images/group-1.svg" alt="" />
+            <Image src="/images/group-1.svg" width={79} height={63} alt="Group 1" />
             <p className="w-[161px] h-[34px] text-2xl font-bold leading-[36px] tracking-[3.2px] text-left text-[#091156]">
               Beautice
             </p>
@@ -21,11 +22,11 @@ function HeaderComponent() {
                 <a className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue">
                   Home
                 </a>
-                <img
+                <Image
                   className="ml-[5px]"
-                  width="7px"
-                  height="7px"
                   src="/images/plus-icon.svg"
+                  width={7}
+                  height={7}
                   alt=""
                 />
               </li>
@@ -53,11 +54,11 @@ function HeaderComponent() {
               </button>
             </div>
             <div className="w-[630px] float-left">
-              <img src="/images/banner.png" alt="" />
+              <Image src="/images/banner.png" width={602} height={401} alt="" />
             </div>
           </div>
           <div className="w-full mt-[132px] px-[auto] py-0 flex justify-center">
-            <img src="/images/slide-button.svg" alt="" />
+            <Image src="/images/slide-button.svg" width={71} height={9} alt="" />
           </div>
         </div>
       </div>

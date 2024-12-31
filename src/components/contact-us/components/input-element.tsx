@@ -1,4 +1,4 @@
-import { type } from "os";
+// import { type } from "os";
 export interface IInput {
   type: string;
   name: string;

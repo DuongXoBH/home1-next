@@ -1,7 +1,8 @@
 import { INFORMATIONS, PAGES } from "@/constants/footer";
 import Item from "./components/item";
+import Image from "next/image";
 
-function FooterComponent() {
+const FooterComponent=()=>{
   return (
     <>
       <div className="w-full h-[705.34px] absolute top-[4283.66px] bg-footer-background bg-no-repeat bg-center z-[-1]"></div>
@@ -9,7 +10,7 @@ function FooterComponent() {
         <div className="w-full flex">
           <div className="w-[492px] mt-4">
             <div className="flex items-center">
-              <img src="/images/footer-logo.svg" alt="" />
+              <Image src="/images/footer-logo.svg" width={79} height={63} alt="" />
               <p className="w-[161px] h-[34px] text-2xl font-bold leading-9 tracking-[3.2px] text-left text-white ml-[18px] mr-0 my-0">
                 Beautice
               </p>
@@ -43,20 +44,22 @@ function FooterComponent() {
         </div>
         <div className="w-full flex justify-between mt-[132px]">
           <div className="w-[305px] h-[27.84px] flex justify-between">
-            <img src="/images/facebook-f.svg" alt="" />
-            <img src="/images/twitter.svg" alt="" />
-            <img src="/images/linkedin-in.svg" alt="" />
-            <img src="/images/youtube.svg" alt="" />
-            <img src="/images/instagram.svg" alt="" />
+            <Image src="/images/facebook-f.svg" width={25} height={28} alt="" />
+            <Image src="/images/twitter.svg" width={25} height={28} alt="" />
+            <Image src="/images/linkedin-in.svg" width={25} height={28} alt="" />
+            <Image src="/images/youtube.svg" width={25} height={28} alt="" />
+            <Image src="/images/instagram.svg" width={25} height={28} alt="" />
           </div>
           <div className="w-[497px] h-[31.18px] text-base font-normal !tracking-[1.65px] text-right">
             © AltDesain Studio 2021 - All right reserved.
           </div>
         </div>
         <a href="#top">
-          <img
+          <Image
             src="/images/to-top-button.svg"
             className="absolute w-9 h-9 right-[-85px] bottom-[81px] "
+            width={7}
+            height={7}
             alt=""
           />
         </a>

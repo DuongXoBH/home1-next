@@ -1,4 +1,5 @@
 import { CARDS } from "@/constants/service";
+import Image from "next/image";
 
 function Card() {
   return (
@@ -8,7 +9,7 @@ function Card() {
           className="h-[458px] flex flex-col items-center bg-[white] opacity-100 shadow-[0px_25px_50px_25px_rgba(246,247,255,1)] z-[1] pt-[50px] pb-0 px-0 rounded-[50px]"
           key={element.name}
         >
-          <img src={element.img} className="w-[166px] h-[166px]" alt="" />
+          <Image src={element.img} width={166} height={166} alt="" />
           <p className="mt-[58px] text-lg leadding-[22.5px] font-semibold text-center text-oxford-blue">
             {element.name}
           </p>

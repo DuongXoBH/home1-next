@@ -1,3 +1,4 @@
+import Image from "next/image";
 import InputElement from "./components/input-element";
 
 function ContactUsConponent() {
@@ -6,7 +7,7 @@ function ContactUsConponent() {
       <div className="w-full h-[825px] absolute top-[3169px] bg-contact-us-background bg-no-repeat z-[-1]"></div>
       <div className="w-full !mt-[147px] grid grid-cols-[570px_570px] container">
         <div className="pt-[165px] text-left px-[auto]">
-          <img src="/images/contact-animations.png" alt="" className="" />
+          <Image src="/images/contact-animations.png" width={520} height={610} alt="" className="" />
         </div>
         <div className="pl-[50px]">
           <p className="w-[90px] h-5 text-base font-semibold leading-5 text-left text-custom-pink mt-[10px]">

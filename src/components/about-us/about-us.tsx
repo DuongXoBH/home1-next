@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function AboutUs() {
   return (
     <>
@@ -25,7 +27,7 @@ function AboutUs() {
               Learn More
             </button>
             <button className="about__play-btnw-[250px] flex items-center justify-center rounded-[50px] border-0">
-              <img src="/images/play-button.svg" alt="" />
+              <Image src="/images/play-button.svg" width={49} height={50} alt="" />
               <p className="text-base font-semibold leading-6 tracking-[1.6px] m-0 pl-[13px] pr-0 py-0;">
                 Watch Video
               </p>
@@ -33,7 +35,7 @@ function AboutUs() {
           </div>
         </div>
         <div className="w-[476px] rounded-[50px_0px_0px_0px]">
-          <img src="/images/about-us-img.png" className="mt-[45px]" alt="" />
+          <Image src="/images/about-us-img.png" className="mt-[45px]" width={475} height={350} alt="" />
         </div>
       </div>
     </>
