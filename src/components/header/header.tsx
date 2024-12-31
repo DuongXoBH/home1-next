@@ -11,7 +11,7 @@ function HeaderComponent() {
         >
           <div className="flex justify-between items-center gap-x-[18px]">
             <img src="/images/group-1.svg" alt="" />
-            <p className="w-[161px] h-[34px] text-2xl font-bold leading-[36px] tracking-widest text-left text-[#091156]">
+            <p className="w-[161px] h-[34px] text-2xl font-bold leading-[36px] tracking-[3.2px] text-left text-[#091156]">
               Beautice
             </p>
           </div>
@@ -21,12 +21,13 @@ function HeaderComponent() {
                 <a className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue">
                   Home
                 </a>
-                {/* <img
+                <img
+                  className="ml-[5px]"
                   width="7px"
                   height="7px"
-                  src="/images/plus-icon.png"
+                  src="/images/plus-icon.svg"
                   alt=""
-                /> */}
+                />
               </li>
               <Nav />
             </ul>
@@ -40,7 +41,7 @@ function HeaderComponent() {
         <div className="w-full h-[550px] mt-[159px] mb-0 mx-0">
           <div className="w-full pl-10 flex">
             <div className="w-[520px] text-[#091156] text-left pt-[56px] px-0">
-              <p className="w-[430px] h-[128px] text-5xl font-semibold m-0 text-left !leading-[60px] text-[#091156]">
+              <p className="w-[430px] h-[128px] text-5xl font-semibold m-0 text-left !leading-[60px] tracking-[1px] text-[#091156]">
                 Clinic & beauty consultant
               </p>
               <p className="w-[474px] h-[54px] text-base font-medium leading-6 tracking-widest text-[#8B8B8B] m-0">
