@@ -1,19 +1,19 @@
-import AboutUs from "@/components/about-us/about-us";
-import ContactUsConponent from "@/components/contact-us/contact-us";
-import FooterComponent from "@/components/footer/footer";
-import HeaderComponent from "@/components/header/header";
-import ProfessionalTeamComponent from "@/components/professional-team/professional-team";
-import ServiceComponent from "@/components/service/service";
+import AboutUs from "@/components/home1/about-us/about-us";
+import ContactUsConponent from "@/components/home1/contact-us/contact-us";
+import FooterComponent from "@/components/common/footer/footer";
+import HeaderComponent from "@/components/common/header/header";
+import Home1BannerComponent from "@/components/home1/home1-banner/home1-banner";
+import ProfessionalTeamComponent from "@/components/common/professional-team/professional-team";
+import ServiceComponent from "@/components/home1/service/service";
 
 export default function Home() {
   return (
     <div>
-      <HeaderComponent />
+      <Home1BannerComponent/>
       <ServiceComponent />
       <AboutUs/>
-      <ProfessionalTeamComponent/>
+      <ProfessionalTeamComponent maginTop=" mt-8 md:mt-[147px]"/>
       <ContactUsConponent/>
-      <FooterComponent/>
     </div>
   );
 }

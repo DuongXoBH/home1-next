@@ -1,7 +1,7 @@
 export const NAVS = [
   {
     text: "About",
-    href: "/",
+    href: "/about",
   },
   {
     text: "Service",

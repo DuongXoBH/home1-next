@@ -5,7 +5,7 @@ export const PAGES = [
   },
   {
     text: "About",
-    href: "/",
+    href: "/about",
   },
   {
     text: "Services",
