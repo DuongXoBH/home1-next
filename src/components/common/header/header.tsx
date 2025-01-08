@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import Nav from "./components/nav";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { useOutsideClick } from "@/app/hooks/use-outside-click";
+import Link from "next/link";
 
 function HeaderComponent() {
   const [isActive, setIsActive] = useState(false);
@@ -19,13 +20,13 @@ function HeaderComponent() {
 
   return (
     <>
-      <div className="w-full container flex items-center z-10 p-4 md:p-0 md:z-0 justify-between" ref={ref}>
+      <div className="w-full container flex items-center z-10 px-4 md:px-0 md:z-0 justify-between" ref={ref} id="top">
         <div
           className="w-full h-[63px] mt-[41px] flex flex-col md:flex-row justify-between items-start md:items-center"
-          id="top"
         >
-          <div className=" flex justify-start md:justify-between items-center md:gap-[18px]">
+          <div className=" flex justify-center md:justify-between items-center md:gap-[18px]">
             <Image
+            className="w-16 h-10 md:w-[79px] md:h-[63px]"
               src="/images/group-1.svg"
               width={79}
               height={63}
@@ -42,12 +43,12 @@ function HeaderComponent() {
           >
             <ul className="flex flex-col md:flex-row items-center md:items-center gap-[47px]">
               <li className="flex">
-                <a
+                <Link
                   className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue"
                   href="/"
                 >
                   Home
-                </a>
+                </Link>
                 <Image
                   className="ml-[5px]"
                   src="/images/plus-icon.svg"
@@ -67,12 +68,12 @@ function HeaderComponent() {
             </ul>
           </div>
         </div>
-        <div className="mt-[41px] flex items-center md:hidden">
+        <div className="mt-5 md:mt-[41px] flex items-center md:hidden">
           <button className="" onClick={changeButton}>
             <Image
-              className="block md:hidden"
+              className="block md:hidden w-14 h-14 md:w-[79px] md:h-[63px]"
               src="/images/hamburger-menu.svg"
-              width={79}
+              width={63}
               height={63}
               alt="Toggle"
             />

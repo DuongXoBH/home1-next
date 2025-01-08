@@ -9,15 +9,15 @@ export const PAGES = [
   },
   {
     text: "Services",
-    href: "/",
+    href: "/service",
   },
   {
     text: "Gallery",
-    href: "/",
+    href: "/gallery",
   },
   {
     text: "Team",
-    href: "/",
+    href: "/team",
   },
 ];
 

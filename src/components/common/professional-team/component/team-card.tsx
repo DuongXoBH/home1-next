@@ -1,4 +1,4 @@
-import { TEAMCARDS } from "@/constants/professional-team";
+import { TEAMCARDS } from "@/constants/pages/home1/professional-team";
 import Image from "next/image";
 
 function TeamCard() {

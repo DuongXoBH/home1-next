@@ -5,11 +5,11 @@ export const NAVS = [
   },
   {
     text: "Service",
-    href: "/",
+    href: "/service",
   },
   {
     text: "Gallery",
-    href: "/",
+    href: "/gallery",
   },
   {
     text: "Blog",
