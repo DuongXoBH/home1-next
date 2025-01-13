@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function FormComponent() {
   return (
-    <div className="w-full mt-8 md:mt-[117px] p-4 md:p-0 mb-20 flex flex-col md:justify-between container">
+    <div className="w-full mt-8 md:mt-[117px] p-4 md:p-0 mb-20 px-4 md:px-0 flex flex-col md:justify-between container">
       <div className="w-full flex flex-col md:flex-row justify-between items-center pr-5">
         <div className="w-full md:w-[680px] flex flex-col items-center md:items-start">
           <div className=" flex flex-col justify-start">

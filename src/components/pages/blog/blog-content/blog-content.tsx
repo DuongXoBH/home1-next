@@ -21,7 +21,7 @@ export function BlogContentComponent() {
       {BLOGLIST.map((element, index) => (
         <div
           key={`blog-${index}`}
-          className={`${Math.ceil((index+1)/3)===currentIndex?"flex flex-col":"hidden"} w-full items-center mt-10 md:mb-[133px] rounded-[50px] md:h-[953px] shadow-custom-professional-team`}
+          className={`${Math.ceil((index+1)/3)===currentIndex?"flex flex-col":"hidden"} w-full items-center mt-10 mb-10 md:mb-[133px] rounded-[50px] md:h-[953px] shadow-custom-professional-team`}
         >
           {/* images */}
           <div>
@@ -32,7 +32,7 @@ export function BlogContentComponent() {
             <div className="flex w-full md:h-[273px] flex-col ">
               <div className="w-full flex items-center justify-center mt-[28px] gap-[15px]">
                 <Image src="/blog-images/folder.svg" alt="" width={25} height={25}/>
-                <TittleText tittleClass="!w-auto md:w-full md:text-left" tittleText={element.tittleText}/>
+                <p className="w-auto md:w-full md:text-left text-xs md:text-base !leading-5 font-semibold text-center tracking-[0.48px] text-custom-pink ">{element.tittleText}</p>
               </div>
             <NameText nameClass="w-full md:text-left mt-[18px]" nameText={element.nameText}/>
             <DescriptionText descriptionClass="w-full md:text-left mt-[23px]" descriptionText={element.desctiptionText}/>

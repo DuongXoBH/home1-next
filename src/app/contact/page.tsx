@@ -6,8 +6,8 @@ export default function Contact() {
     <>
       <FormComponent />
       <div className="w-full h-[1100px] absolute bg-no-repeat bg-right-top z-[-1] top-[348.97px] bg-contact-backgound"></div>
-    {/* embed map */}
-      <div className="w-full h-[418px] mt-[113px]">
+      {/* embed map */}
+      <div className="w-full h-[418px] mt-[113px] px-4 md:px-0">
         <iframe
           style={{ height: "100%", width: "100%", border: 0 }}
           src="https://www.google.com/maps/embed/v1/place?q=quang+truong+thanh+pho+Vinh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
@@ -18,4 +18,3 @@ export default function Contact() {
     </>
   );
 }
-

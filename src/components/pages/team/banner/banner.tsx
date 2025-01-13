@@ -1,6 +1,6 @@
 export default function Banner() {
   return (
-    <div className="w-full md:h-[529px] mt-10 md:mt-[46px] bg-team-background bg-cover  bg-top bg-no-repeat">
+    <div className="w-full md:h-[529px] mt-10 md:mt-[46px] px-4 md:px-0 bg-team-background bg-cover  bg-top bg-no-repeat">
       <div className="w-full h-full bg-custom-service-slogan">
         <div className="container px-4 md:p-0 md:w-full md:h-full flex flex-col md:flex-row md:justify-between md:items-center text-white">
           <div className="flex flex-col w-full md:w-full pb-[22px] text-center items-center">

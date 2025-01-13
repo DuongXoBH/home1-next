@@ -18,7 +18,7 @@ export default function FaqBoxComponent() {
           className={`w-full flex flex-col items-center mb-[15px]`}
           key={`question_${index}`}
         >
-          <div onClick={() => toggleActive(index)} className="w-full h-[24px] flex justify-between mb-[11px] md:pl-8 md:pr-5 md:items-start">
+          <div onClick={() => toggleActive(index)} className="w-full md:h-[24px] flex justify-between mb-[11px] md:pl-8 md:pr-5 md:items-start">
             <p className="text-oxford-blue text-base !tracking-[1.82px] font-semibold">
               {element.tittle}
             </p>
