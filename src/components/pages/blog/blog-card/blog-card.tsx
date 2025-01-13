@@ -18,7 +18,7 @@ export default function BlogCardComponent() {
           Recent Posts
         </p>
         <div className="flex flex-col gap-[27px]">
-          <div className="w-[273px] flex flex-row justify-between">
+          <div className="w-full md:w-[273px] flex flex-row justify-center gap-5 md:justify-between">
             <Image
               src="/blog-images/recent-1.svg"
               alt=""
@@ -34,7 +34,7 @@ export default function BlogCardComponent() {
               </p>
             </div>
           </div>
-          <div className="w-[273px] flex flex-row justify-between">
+          <div className="w-full md:w-[273px] flex flex-row justify-center gap-5 md:justify-between">
             <Image
               src="/blog-images/recent-2.svg"
               alt=""
@@ -50,7 +50,7 @@ export default function BlogCardComponent() {
               </p>
             </div>
           </div>
-          <div className="w-[273px] flex flex-row justify-between">
+          <div className="w-full md:w-[273px] flex flex-row justify-center gap-5 md:justify-between">
             <Image
               src="/blog-images/recent-3.svg"
               alt=""
@@ -72,7 +72,7 @@ export default function BlogCardComponent() {
       <Card tittleText="Categories" contentClass="flex w-full flex-col pl-[49px] md:items-start md:mb-[36px]" childrent={
         <>
           {CATEGORIES.map((element,index)=>(
-              <p key={`categories-${index}`} className={`text-sm w-full text-left h-[23px] mb-1 leading-[21px] font-normal tracking-[1.4px] text-custom-gray`}>{element.text}</p>
+              <p key={`categories-${index}`} className={`text-sm w-full text-center md:text-left h-[23px] mb-1 leading-[21px] font-normal tracking-[1.4px] text-custom-gray`}>{element.text}</p>
           ))}
         </>
       }/>

@@ -32,7 +32,7 @@ export function BlogContentComponent() {
             <div className="flex w-full md:h-[273px] flex-col ">
               <div className="w-full flex items-center justify-center mt-[28px] gap-[15px]">
                 <Image src="/blog-images/folder.svg" alt="" width={25} height={25}/>
-                <TittleText tittleClass="w-auto md:w-full md:text-left" tittleText={element.tittleText}/>
+                <TittleText tittleClass="!w-auto md:w-full md:text-left" tittleText={element.tittleText}/>
               </div>
             <NameText nameClass="w-full md:text-left mt-[18px]" nameText={element.nameText}/>
             <DescriptionText descriptionClass="w-full md:text-left mt-[23px]" descriptionText={element.desctiptionText}/>
