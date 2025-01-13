@@ -1,7 +1,6 @@
 import BlogBannerComponent from "@/components/pages/blog/banner/banner";
 import BlogCardComponent from "@/components/pages/blog/blog-card/blog-card";
 import { BlogContentComponent } from "@/components/pages/blog/blog-content/blog-content";
-import { BLOGLIST } from "@/constants/pages/blog";
 
 export default function Blog(){
     return (

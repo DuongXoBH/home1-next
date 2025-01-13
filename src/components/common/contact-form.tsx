@@ -1,4 +1,3 @@
-import Image from "next/image";
 import InputElement from "../pages/home1/contact-us/components/input-element";
 
 export default function ContactFormComponent(){

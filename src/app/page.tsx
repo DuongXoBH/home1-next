@@ -1,5 +1,4 @@
 import AboutUs from "@/components/pages/home1/about-us/about-us";
-import ContactUsConponent from "@/components/pages/home1/contact-us/contact-us";
 import Home1BannerComponent from "@/components/pages/home1/home1-banner/home1-banner";
 import ProfessionalTeamComponent from "@/components/common/professional-team/professional-team";
 import ServiceComponent from "@/components/pages/home1/service/service";

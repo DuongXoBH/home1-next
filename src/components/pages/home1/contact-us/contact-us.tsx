@@ -1,5 +1,4 @@
 import Image from "next/image";
-import InputElement from "./components/input-element";
 import TittleText from "@/components/common/tittle-text";
 import NameText from "@/components/common/name-text";
 import DescriptionText from "@/components/common/description-text";

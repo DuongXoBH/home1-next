@@ -1,4 +1,3 @@
-import { QUESTIONLIST } from "@/constants/pages/service/question";
 import FaqBoxComponent from "./components/faq-box";
 
 export default function QuestionComponent(){
