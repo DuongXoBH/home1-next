@@ -1,5 +1,4 @@
 import TextBoxComponent from "@/components/common/text-box";
-import Image from "next/image";
 
 export default function QuotaComponent() {
   return (

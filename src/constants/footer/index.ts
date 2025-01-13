@@ -32,10 +32,10 @@ export const INFORMATIONS = [
   },
   {
     text: "Blog",
-    href: "/",
+    href: "/blog",
   },
   {
     text: "Contact",
-    href: "/",
+    href: "/contact",
   },
 ];

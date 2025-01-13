@@ -13,6 +13,6 @@ export const NAVS = [
   },
   {
     text: "Blog",
-    href: "/",
+    href: "/blog",
   },
 ];

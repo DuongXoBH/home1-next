@@ -7,7 +7,7 @@ function TeamCard() {
       {TEAMCARDS.map((element) => (
         <div
           key={element.name}
-          className="w-[270px] md:h-[439px] p-5 md:p-0 flex flex-col items-center bg-[white] z-[1] mt-12 md:mt-[177px] mb-0 mx-0 rounded-[50px] md:hover:w-[424px] md:hover:h-[626px] hover:shadow-custom-professional-team hover:duration-[0.5s] md:hover:mt-[77px] hover:mb-0 hover:mx-0 md:hover:pt-[100px] hover:rounded-[50px]"
+          className="w-[270px] md:h-[499px] p-5 md:p-0 flex flex-col items-center bg-inherit hover:bg-[white] z-[1] mt-12 md:mt-[177px] mb-0 mx-0 md:hover:w-[424px] md:hover:h-[626px] hover:shadow-custom-professional-team hover:duration-[0.5s] md:hover:mt-[77px] hover:mb-0 hover:mx-0 md:hover:pt-[100px] hover:rounded-[50px]"
         >
           <Image src={element.img} width={146} height={146} alt="" />
           <div className="w-[263px] h-[120px] flex flex-col items-center mt-[53px]">
@@ -18,7 +18,7 @@ function TeamCard() {
               {element.name}
             </p>
             <p className="w-[260px] h-[63px] text-sm font-normal leading-[21px] tracking-widest text-center mt-5 text-custom-gray mb-0 mx-0 group-hover:mt-3">
-              {element.desctiption}
+              {element.description}
             </p>
           </div>
           <div className="flex justify-between mt-[60px]">

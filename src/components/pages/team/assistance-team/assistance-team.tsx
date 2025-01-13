@@ -4,7 +4,7 @@ import { ASSISTANCELIST } from "@/constants/pages/team/assistance";
 
 export default function AssistanceTeamComponent() {
   return (
-    <div className="w-full container mt-[163px] flex flex-col ">
+    <div className="w-full container mt-10 md:mt-[163px] flex flex-col ">
       <TextBoxComponent
         divClass="w-full flex-col items-center"
         tittleClass=""

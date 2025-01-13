@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -33,6 +33,9 @@ export default {
         'gallery-bubble-background' : "url(/gallery-images/background-bubble.svg)",
         'team-bubble-background' : "url(/team-images/team-bubble.svg)",
         'team-background' : "url(/team-images/team-bg.svg)",
+        'slider-background' : "url(/team-images/element-background.svg)",
+        'blog-banner-background' : "url(/blog-images/blog-banner.svg)",
+        'contact-backgound' : "url(/contact-images/contact-background.svg)",
       },
       boxShadow: {
         'custom-professional-team': '0px 25px 50px 25px rgba(246, 247, 255, 1)',

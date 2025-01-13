@@ -43,12 +43,12 @@ function HeaderComponent() {
           >
             <ul className="flex flex-col md:flex-row items-center md:items-center gap-[47px]">
               <li className="flex">
-                <Link
+                <a
                   className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue"
                   href="/"
                 >
                   Home
-                </Link>
+                </a>
                 <Image
                   className="ml-[5px]"
                   src="/images/plus-icon.svg"
@@ -59,7 +59,7 @@ function HeaderComponent() {
               </li>
               <Nav />
               <li>
-                <a href="#">
+                <a href="/contact">
                   <button className="w-[158px] h-[52px] flex justify-center items-center text-white bg-custom-pink text-base font-semibold tracking-widest text-left rounded-[50px]">
                     Contact
                   </button>

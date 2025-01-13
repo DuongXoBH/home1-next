@@ -10,8 +10,7 @@ export interface IProfessionalTeamInput {
 };
 function ProfessionalTeamComponent(props : IProfessionalTeamInput) {
   return (
-    <>
-      <div className = {`w-full flex flex-col items-center ${props.maginTop} p-4 md:p-0 container`}>
+    <div className = {`w-full flex flex-col items-center ${props.maginTop} p-4 md:p-0 container`}>
         <div className={`w-full md:w-[848px] flex flex-col items-center font-semibold ${props.textClass}`}>
           <p className="w-40 h-5 text-xs md:text-base md:leading-5 text-center text-custom-pink">
             {props.tittleText}
@@ -27,7 +26,6 @@ function ProfessionalTeamComponent(props : IProfessionalTeamInput) {
           <TeamCard />
         </div>
       </div>
-    </>
   );
 }
 
