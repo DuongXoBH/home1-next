@@ -30,9 +30,9 @@ export function BlogContentComponent() {
           {/* text */}
           <div className="flex md:max-w-[580px] md:mt-[30px] flex-col items-center md:items-start">
             <div className="flex w-full md:h-[273px] flex-col ">
-              <div className="w-full flex items-center justify-center mt-[28px] gap-[15px]">
+              <div className="w-full flex items-center justify-center md:justify-start mt-[28px] gap-[15px]">
                 <Image src="/blog-images/folder.svg" alt="" width={25} height={25}/>
-                <p className="w-auto md:w-full md:text-left text-xs md:text-base !leading-5 font-semibold text-center tracking-[0.48px] text-custom-pink ">{element.tittleText}</p>
+                <p className="w-auto md:text-left text-xs md:text-base !leading-5 font-semibold text-center tracking-[0.48px] text-custom-pink ">{element.tittleText}</p>
               </div>
             <NameText nameClass="w-full md:text-left mt-[18px]" nameText={element.nameText}/>
             <DescriptionText descriptionClass="w-full md:text-left mt-[23px]" descriptionText={element.desctiptionText}/>

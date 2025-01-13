@@ -3,6 +3,7 @@ import Image from "next/image";
 import Nav from "./components/nav";
 import { useCallback, useState } from "react";
 import { useOutsideClick } from "@/app/hooks/use-outside-click";
+import Link from "next/link";
 
 function HeaderComponent() {
   const [isActive, setIsActive] = useState(false);
@@ -42,12 +43,12 @@ function HeaderComponent() {
           >
             <ul className="flex flex-col md:flex-row items-center md:items-center gap-[47px]">
               <li className="flex">
-                <a
+                <Link
                   className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue"
-                  href="#"
+                  href={`/`}
                 >
                   Home
-                </a>
+                </Link>
                 <Image
                   className="ml-[5px]"
                   src="/images/plus-icon.svg"
