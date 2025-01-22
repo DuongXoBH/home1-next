@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export interface IInputItem {
   href: string;
   text: string;
@@ -21,12 +23,12 @@ function Item(props: IInput) {
             key={element.text}
             className="list-image-footer-list-icon list-inside mb-[11px] ml-1"
           >
-            <a
+            <Link
               className="text-sm md:text-base font-normal md:tracking-widest text-left pl-[7px]"
               href={element.href}
             >
               {element.text}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

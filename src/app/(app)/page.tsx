@@ -1,12 +1,14 @@
+"use client"
 import AboutUs from "@/components/pages/home1/about-us/about-us";
 import Home1BannerComponent from "@/components/pages/home1/home1-banner/home1-banner";
 import ProfessionalTeamComponent from "@/components/common/professional-team/professional-team";
 import ServiceComponent from "@/components/pages/home1/service/service";
 import ContactUsComponent from "@/components/pages/home1/contact-us/contact-us";
 
+
 export default function Home() {
   return (
-    <div>
+    <>
       <Home1BannerComponent />
       <ServiceComponent />
       <AboutUs />
@@ -21,6 +23,6 @@ export default function Home() {
       />
       <div className="w-full h-[825px] absolute top-[3169px] bg-contact-us-background bg-no-repeat z-[-1] "></div>
       <ContactUsComponent />
-    </div>
+    </>
   );
 }

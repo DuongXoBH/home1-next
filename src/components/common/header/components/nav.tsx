@@ -1,4 +1,5 @@
 import { NAVS } from "@/constants/header";
+import Link from "next/link";
 
 function Nav() {
   return (
@@ -6,12 +7,12 @@ function Nav() {
       {NAVS.map((element, index) => {
         return (
           <li key={index}>
-            <a
+            <Link
               className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue"
               href={element.href}
             >
               {element.text}
-            </a>
+            </Link>
           </li>
         );
       })}

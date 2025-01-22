@@ -2,31 +2,33 @@
 import Image from "next/image";
 import Nav from "./components/nav";
 import { useCallback, useState } from "react";
-import { useOutsideClick } from "@/app/hooks/use-outside-click";
 import Link from "next/link";
+import { useOutsideClick } from "@/app/hooks/use-outside-click";
+import LoginButton from "./components/login-button";
 
 function HeaderComponent() {
   const [isActive, setIsActive] = useState(false);
   const changeButton = () => {
     setIsActive(!isActive);
   };
-  const handleClickOutSide =  useCallback(() => {
-    if(isActive){
-      setIsActive(false)
+  const handleClickOutSide = useCallback(() => {
+    if (isActive) {
+      setIsActive(false);
     }
-  }, [isActive])
- 
-  const ref = useOutsideClick(handleClickOutSide);
+  }, [isActive]);
 
+  const ref = useOutsideClick(handleClickOutSide);
   return (
     <>
-      <div className="w-full container flex items-center z-10 px-4 md:px-0 md:z-0 justify-between" ref={ref} id="top">
-        <div
-          className="w-full h-[63px] mt-[41px] flex flex-col md:flex-row justify-between items-start md:items-center"
-        >
+      <div
+        className="w-full container flex z-10 px-4 md:px-0 md:z-0 justify-between"
+        ref={ref}
+        id="top"
+      >
+        <div className="w-full h-[63px] mt-[41px] flex flex-col md:flex-row justify-between items-start md:items-center">
           <div className=" flex justify-center md:justify-between items-center md:gap-[18px]">
             <Image
-            className="w-16 h-10 md:w-[79px] md:h-[63px]"
+              className="w-16 h-10 md:w-[79px] md:h-[63px]"
               src="/images/group-1.svg"
               width={79}
               height={63}
@@ -59,11 +61,11 @@ function HeaderComponent() {
               </li>
               <Nav />
               <li>
-                <a href="/contact">
+                <Link href="/contact">
                   <button className="w-[158px] h-[52px] flex justify-center items-center text-white bg-custom-pink text-base font-semibold tracking-widest text-left rounded-[50px]">
                     Contact
                   </button>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -79,9 +81,10 @@ function HeaderComponent() {
             />
           </button>
         </div>
+        {/* Login Button */}
+        <LoginButton/>
       </div>
     </>
   );
 }
-
 export default HeaderComponent;

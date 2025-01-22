@@ -1,7 +1,6 @@
 "use client"
 import DescriptionText from "@/components/common/description-text";
 import NameText from "@/components/common/name-text";
-import TittleText from "@/components/common/tittle-text";
 import { BLOGLIST } from "@/constants/pages/blog";
 import Image from "next/image";
 import { useState } from "react";
