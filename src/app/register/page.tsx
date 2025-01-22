@@ -54,7 +54,7 @@ export default function AddUser() {
 
   const onSubmit: SubmitHandler<ResisterFormInput> = async (data) => {
     console.log(data);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
+    const response = await fetch(`https://home1-backend.onrender.com/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

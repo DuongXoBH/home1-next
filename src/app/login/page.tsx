@@ -42,7 +42,7 @@ export default function LoginPage() {
   const setUser = useSetAtom(UserInit)
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      const response = await fetch(`https://home1-backend.onrender.com/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
