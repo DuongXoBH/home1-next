@@ -1,11 +1,11 @@
 "use client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAtom, atom } from "jotai";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 interface ResisterFormInput {
   firstName: string;
@@ -49,11 +49,9 @@ export default function AddUser() {
     formState: { errors },
   } = useForm<ResisterFormInput>({ resolver: yupResolver(schema) });
   const [message, setMessage] = useAtom(messageAtom);
-  // const [user, setUser] = useAtom(userAtom);
-  const router = useRouter();
+  const route = useRouter();
 
   const onSubmit: SubmitHandler<ResisterFormInput> = async (data) => {
-    console.log(data);
     const response = await fetch(`https://home1-backend.onrender.com/`, {
       method: "POST",
       headers: {
@@ -64,7 +62,7 @@ export default function AddUser() {
     if (response.ok) {
       toast.success("Success.Redirect to Login Page");
       setTimeout(() => {
-        router.push("/login");
+        route.push("/login");
       }, 2000);
     } else {
       const errorMessage = await response.json();
