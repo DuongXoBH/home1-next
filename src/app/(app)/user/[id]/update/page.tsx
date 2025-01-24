@@ -2,13 +2,14 @@
 import Image from "next/image";
 import { use, useEffect } from "react";
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { atom, useAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { UserInit } from "@/store";
+import { FetchUserbyIdApi } from "@/api";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -21,56 +22,54 @@ const schema = yup.object().shape({
       'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
     ),
 });
-interface IUser {
-  _id: string;
+// interface IUser {
+//   _id: string;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+// }
+export interface UpdateFormInput {
   firstName: string;
   lastName: string;
   email: string;
 }
-interface UpdateFormInput {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
 const messageAtom = atom("");
+
 export default function UserUpdate({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const [userInfor, setUserInfor] = useState<IUser>({
-    _id: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
-  const [message, setMessage] = useAtom(messageAtom);
-  const [user, setUser] = useAtom(UserInit);
-  const route = useRouter();
   // get information of user
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(
-          `https://home1-backend.onrender.com/${id}`
-        );
-        const userData = await response.json();
-        setUserInfor(userData);
-      } catch (error) {
-        console.log("🚀 ~ fetchUser ~ error:", error);
-      }
-    };
-    fetchUser();
-  }, [id]);
+  const userInfor = FetchUserbyIdApi(id);
+
+  // define UpdateForm
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UpdateFormInput>({ resolver: yupResolver(schema) },);
-// update information of user
+    reset,
+  } = useForm<UpdateFormInput>({
+    resolver: yupResolver(schema),
+  });
+
+  // Update defaultValue when call Api
+  useEffect(() => {
+    reset(userInfor);
+  }, [userInfor,reset]);
+
+  //define message variable for store toast notification
+  const [message, setMessage] = useAtom(messageAtom);
+  //define user variable in localStorage
+  const [user, setUser] = useAtom(UserInit);
+  const route = useRouter();
+  //
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // update information of user
   const onSubmit: SubmitHandler<UpdateFormInput> = async (data) => {
+    if(isSubmitting) return;
+    setIsSubmitting(true);
     const response = await fetch(`https://home1-backend.onrender.com/${id}`, {
       method: "PATCH",
       headers: {
@@ -80,19 +79,22 @@ export default function UserUpdate({
     });
     const result = await response.json();
     if (response.ok) {
-      if (id===user?._id) {
-        setUser(result.data);
-      }
       toast.success("Success.Redirect to Profile Page");
-      setTimeout(() => {
+      if (id === user?._id) {
+        setUser(result.data);
         route.push("/profile");
-      }, 2000);
+      } else {
+        route.push(`/user`);
+      }
     } else {
       const errorMessage = await response.json();
       setMessage(errorMessage.message || "An error occurred.");
       toast.error(message);
     }
+    setIsSubmitting(false);
+
   };
+
   return (
     <div className="w-full min-h-screen flex items-center">
       <div className="w-[60%] mx-auto flex flex-row bg-white">
@@ -113,8 +115,6 @@ export default function UserUpdate({
                 id="email"
                 {...register("email")}
                 className="w-full p-2 border rounded"
-                defaultValue={userInfor?.email}
-                
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">
@@ -131,8 +131,6 @@ export default function UserUpdate({
                 id="firstName"
                 {...register("firstName")}
                 className="w-full p-2 border rounded"
-                defaultValue={userInfor?.firstName}
-                
               />
               {errors.firstName && (
                 <p className="text-red-500 text-sm mt-1">
@@ -149,8 +147,6 @@ export default function UserUpdate({
                 id="lastName"
                 {...register("lastName")}
                 className="w-full p-2 border rounded"
-                defaultValue={userInfor?.lastName}
-                
               />
               {errors.lastName && (
                 <p className="text-red-500 text-sm mt-1">
@@ -161,13 +157,13 @@ export default function UserUpdate({
             <button
               type="submit"
               className="w-full bg-custom-pink text-white py-2 px-4 rounded hover:bg-yellow-600"
+              disabled={isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Submitting" : "Submit"}
             </button>
           </form>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }

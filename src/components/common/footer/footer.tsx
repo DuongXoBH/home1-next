@@ -6,10 +6,10 @@ const FooterComponent = () => {
   return (
     <>
       <div
-        className={`w-full h-[705.34px] md:block bg-footer-background bg-no-repeat bg-center pt-[214px]`}
+        className={`w-full h-[705.34px] md:block bg-footer-background bg-no-repeat bg-top bg-cover pt-[214px]`}
       >
         <div
-          className={`w-full relative flex flex-col p-4 md:p-0 text-[white] container bg-patrick-blue md:h-full md:bg-inherit`}
+          className={`w-full flex flex-col p-4 md:p-0 text-[white] container bg-patrick-blue md:h-full md:bg-inherit`}
         >
           <div className="w-full flex flex-col md:flex-row">
             <div className="w-full md:w-[492px] mt-4">
@@ -87,18 +87,6 @@ const FooterComponent = () => {
               © AltDesain Studio 2021 - All right reserved.
             </div>
           </div>
-          <a
-            href="#top"
-            className="hidden md:block absolute right-[-85px] bottom-[173px]"
-          >
-            <Image
-              src="/images/to-top-button.svg"
-              className=""
-              width={36}
-              height={36}
-              alt=""
-            />
-          </a>
         </div>
       </div>
     </>

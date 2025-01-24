@@ -7,9 +7,9 @@ import * as yup from "yup";
 import Image from "next/image";
 import { useSetAtom } from "jotai";
 import { UserInit } from "@/store";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
-interface LoginFormInputs {
+export interface LoginFormInputs {
   email: string;
   password: string;
 }
@@ -37,10 +37,14 @@ export default function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>({ resolver: yupResolver(schema) });
-  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const route = useRouter();
-  const setUser = useSetAtom(UserInit)
+  const setUser = useSetAtom(UserInit);
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
     try {
       const response = await fetch(`https://home1-backend.onrender.com/login`, {
         method: "POST",
@@ -51,19 +55,19 @@ export default function LoginPage() {
       });
 
       const result = await response.json();
-      if (response.ok) {
-        setUser(result.data);
-        toast.success("Login successful!");
-        setTimeout(() => {
-          route.push("/");
-        }, 2000);
-      } else {
-        setErrorMessage(result.message);
-        toast.error(errorMessage);
+      if (!response.ok) {
+        toast.error(result.message);
+        setIsSubmitting(false);
+        return;
       }
+      setUser(result.data);
+        toast.success("Login successful!");
+        route.push("/");
     } catch (error) {
-      console.log(error)
+      console.log("🚀 ~ constonSubmit:SubmitHandler<LoginFormInputs>= ~ error:", error)
+      toast.error("Failed. Try again");
     }
+    setIsSubmitting(false);
   };
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
@@ -108,14 +112,14 @@ export default function LoginPage() {
             </div>
             <button
               type="submit"
-              className="w-full bg-lime-700 text-white py-2 px-4 rounded hover:bg-red-600"
+              className="w-full bg-lime-700 text-white py-2 px-4 rounded hover:bg-red-600 disabled:bg-slate-700"
+              disabled={isSubmitting}
             >
               Login
             </button>
           </form>
         </div>
       </div>
-      <ToastContainer/>
     </div>
     
   );

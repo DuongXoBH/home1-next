@@ -32,12 +32,12 @@ export default function LoginButton() {
           <Image src="/user-icon.svg" alt="" width={45} height={45} />
         </button>
         <ul
-          className={`bg-inherit w-[200px] flex flex-col items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0 ${
+          className={`bg-inherit w-[300px] flex flex-col items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0 ${
             open ? "block" : "hidden"
           }`}
         >
-          <li className="text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue mt-2">
-            Xin chào, {user.firstName} {user.lastName}
+          <li className="text-base font-semibold leading-[20px] text-left tracking-widest border-b-2 hover:text-oxford-blue active:text-oxford-blue mt-2">
+            Hello, {user.firstName} {user.lastName}
           </li>
           <li className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue mt-2">
             <Link href={`/profile`}>My Profile</Link>
