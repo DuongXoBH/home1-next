@@ -40,8 +40,9 @@ async function updateUser(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  if (!response.ok) {
-    throw new Error("Fail updated");
+  const result = await response.json();
+    if (!response.ok) {
+    throw new Error(result.message || "Fail");
   }
 }
 
@@ -84,8 +85,9 @@ async function addUser(data: {
     },
     body: JSON.stringify(data),
   });
+  const result = await response.json();
   if (!response.ok) {
-    toast.error("Fail");
+    throw new Error(result.message)
   }
 }
 
