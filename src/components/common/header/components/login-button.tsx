@@ -13,9 +13,7 @@ export default function LoginButton() {
   const logOut = () => {
     toast.success("Logout successful. Redirect to Login page");
     setUser(null);
-    setTimeout(() => {
-      route.push("/login");
-    }, 1000); 
+    route.push("/login");
   };
   const openUser = () => {
     setOpen(!open);

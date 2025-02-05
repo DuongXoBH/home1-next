@@ -1,3 +1,4 @@
+
 export const PAGES = [
   {
     text: "Home",
@@ -38,4 +39,8 @@ export const INFORMATIONS = [
     text: "Contact",
     href: "/contact",
   },
+  {
+    text: "User",
+    href: "/user",
+  }
 ];

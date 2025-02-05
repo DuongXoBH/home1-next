@@ -1,15 +1,16 @@
 "use client";
 
-import { FetchUsersApi } from "@/api";
+import { useFetchUsersApi } from "@/api";
 import { UserInit } from "@/store";
 import { useAtom, useAtomValue } from "jotai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import EditModal from "../component/edit-modal";
-import { deleteModal, editModal } from "@/store/user";
+import { addModal, deleteModal, editModal, usersAtom } from "@/store/user";
 import DeleteModal from "../component/delete-modal";
+import AddModal from "../component/add-modal";
 
 export interface IUser {
   _id: string;
@@ -21,12 +22,15 @@ export interface IUser {
 export default function UsersList() {
   const user = useAtomValue(UserInit);
   const route = useRouter();
+  const [users, setUsers] = useAtom(usersAtom);
   const [isDeleteModal, setIsDeleteModal] = useAtom(deleteModal);
   const [isEditModal, setIsEditModal] = useAtom(editModal);
-  const [selectedUserId,setSelectedUserId] = useState<string>("")
+  const [isAddModal, setIsAddModal] = useAtom(addModal);
+  const [selectedUserId, setSelectedUserId] = useState<string>("");
   // Fetch users
-  const users = FetchUsersApi();
-  
+  const userList = useFetchUsersApi().data;
+  setUsers(userList);
+
   // Handle first render when user is null
   useEffect(() => {
     const checkTimeout = setTimeout(() => {
@@ -41,32 +45,31 @@ export default function UsersList() {
     }, 1000);
     return () => clearTimeout(checkTimeout);
   }, [user, route]);
+
   // funtion to open delete modal
   const onDelete = (id: string) => {
     setIsDeleteModal(!isDeleteModal);
-    console.log(id)
+    setSelectedUserId(id);
   };
+
   // funtion to open edit modal
   const onEdit = (id?: string) => {
     if (id) {
-      console.log("Edit " + id);
       setIsEditModal(!isEditModal);
       setSelectedUserId(id);
       return;
     }
-    // TODO: validation form for add new
-    // Call api create
-    // call api reload page
-    console.log("Add new user");
+    // open add user modal
+    setIsAddModal(!isAddModal);
   };
+
   // Avoid rendering UI if user is null
   if (user === null) {
     return null;
   }
-  // TOdo: create table component
-  // Add modal
+
   return (
-    <div className="space-y-4 p-6 container">
+    <div className="space-y-4 p-6 container w-full min-h-screen">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold">User List</h1>
         <div>
@@ -78,53 +81,53 @@ export default function UsersList() {
           </button>
         </div>
       </div>
-      <table className="table-auto border-collapse border border-gray-300 w-full text-sm text-left">
-        <thead>
-          <tr className="bg-gray-100 border-b border-gray-300">
-            <th className="px-4 py-2">Id</th>
-            <th className="px-4 py-2">Name</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Actions</th>
-          </tr>
-          {users?.map((user: IUser) => (
-            <tr key={user._id} className="border-b border-gray-200">
-              <td className="px-4 py-2">{user._id}</td>
-              <td className="px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
-              <td className="px-4 py-2">{user.email}</td>
-              <td className="px-4 py-2 flex gap-5">
-                <Link href={`/user/${user._id}/update`}>
-                  <button className="w-20 h-10 border-2 rounded-xl">
-                    Update
-                  </button>
-                </Link>
-                <Link href={`/user/${user._id}`}>
-                  <button className="w-20 h-10 border-2 rounded-xl">
-                    Profile
-                  </button>
-                </Link>
-                <div>
+      <div className="overflow-x-auto">
+        <table className="table-auto border-collapse border border-gray-300 w-full min-w-max text-sm text-left">
+          <thead>
+            <tr className="bg-gray-100 border-b border-gray-300">
+              <th className="px-4 py-2">Id</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users?.map((user: IUser) => (
+              <tr key={user._id} className="border-b border-gray-200">
+                <td className="px-4 py-2">{user._id}</td>
+                <td className="px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
+                <td className="px-4 py-2">{user.email}</td>
+                <td className="px-4 py-2 flex flex-wrap gap-2 sm:gap-5">
+                  <Link href={`/user/${user._id}/update`}>
+                    <button className="w-20 h-10 border-2 rounded-xl">
+                      Update
+                    </button>
+                  </Link>
+                  <Link href={`/user/${user._id}`}>
+                    <button className="w-20 h-10 border-2 rounded-xl">
+                      Profile
+                    </button>
+                  </Link>
                   <button
                     onClick={() => onDelete(user._id)}
                     className="w-20 h-10 border-2 rounded-xl"
                   >
                     Delete
                   </button>
-                </div>
-                <div>
                   <button
                     onClick={() => onEdit(user._id)}
                     className="w-20 h-10 border-2 rounded-xl"
                   >
                     Edit
                   </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </thead>
-        <tbody></tbody>
-      </table>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
+      {/* Navigation */}
       <nav
         aria-label="Page navigation example"
         className="mt-10 flex justify-center"
@@ -219,9 +222,10 @@ export default function UsersList() {
           </li>
         </ul>
       </nav>
-    {/* Modal */}
-        <EditModal userId={selectedUserId}/>
-        <DeleteModal/>
+      {/* Modal */}
+      <AddModal />
+      <EditModal userId={selectedUserId} />
+      <DeleteModal userId={selectedUserId} />
     </div>
   );
 }

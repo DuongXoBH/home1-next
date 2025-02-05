@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-// import { UserInit } from "@/store";
 import { useFetchUserbyIdApi, useUpdateUser, } from "@/api";
 
 const schema = yup.object().shape({

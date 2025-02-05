@@ -3,8 +3,8 @@ import Image from "next/image";
 import Nav from "./components/nav";
 import { useCallback, useState } from "react";
 import Link from "next/link";
-import { useOutsideClick } from "@/app/hooks/use-outside-click";
 import LoginButton from "./components/login-button";
+import { useOutsideClick } from "@/hooks/use-outside-click";
 
 function HeaderComponent() {
   const [isActive, setIsActive] = useState(false);
