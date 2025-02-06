@@ -6,13 +6,13 @@ const FooterComponent = () => {
   return (
     <>
       <div
-        className={`w-full h-[705.34px] md:block md:bg-footer-background bg-no-repeat bg-top md:pt-[214px]`}
+        className={`w-full h-auto min-h-[705.34px] md:block md:bg-footer-background bg-no-repeat bg-top md:pt-[214px]`}
       >
         <div
           className={`w-full flex flex-col p-4 md:p-0 text-[white] container bg-patrick-blue md:h-full md:bg-inherit`}
         >
           <div className="w-full flex flex-col md:flex-row">
-            <div className="w-full md:w-[492px] mt-4">
+            <div className="w-full md:max-w-[492px] mt-4">
               <div className="flex items-center">
                 <div>
                   <Image
