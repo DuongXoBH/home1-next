@@ -6,12 +6,12 @@ import {
   DialogPanel,
 } from "@headlessui/react";
 import { useAtom } from "jotai";
-import { editModal } from "@/store/user";
+import { editModal } from "@/stage-manage/user";
 import { updateSchema } from "@/constants/pages/user/form-validate";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UpdateFormInput } from "@/app/(app)/user/[id]/update/page";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useFetchUserbyIdApi, useUpdateUser } from "@/api";
+import { useFetchUserbyIdApi, useUpdateUser } from "@/api-hook/user";
 import { useEffect, useState } from "react";
 
 export default function EditModal(props: { userId: string }) {

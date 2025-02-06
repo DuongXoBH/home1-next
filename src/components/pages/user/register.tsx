@@ -2,10 +2,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useAtom, atom } from "jotai";
 import Image from "next/image";
-import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useAddUser } from "@/api-hook/user";
+import { useState } from "react";
 
 export interface ResisterFormInput {
   firstName: string;
@@ -14,7 +14,6 @@ export interface ResisterFormInput {
   password: string;
   confirmPassword: string;
 }
-const messageAtom = atom("");
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -48,33 +47,28 @@ export default function AddUser() {
     handleSubmit,
     formState: { errors },
   } = useForm<ResisterFormInput>({ resolver: yupResolver(schema) });
-  const [message, setMessage] = useAtom(messageAtom);
+
+  const [isSubmitting,setIsSubmitting] = useState(false);
   const route = useRouter();
+  const addMutation = useAddUser();
 
   const onSubmit: SubmitHandler<ResisterFormInput> = async (data) => {
-    const response = await fetch(`https://home1-backend.onrender.com/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    if(isSubmitting) return;
+    console.log("🚀 ~ constonSubmit:SubmitHandler<ResisterFormInput>= ~ isSubmitting:", isSubmitting)
+    setIsSubmitting(true);
+    await addMutation.mutate({data},{
+      onSuccess: (data)=>{
+        console.log("🚀 ~ constonSubmit:SubmitHandler<ResisterFormInput>= ~ data:", data);
+        route.push("/login")
+      }
     });
-    if (response.ok) {
-      toast.success("Success.Redirect to Login Page");
-      setTimeout(() => {
-        route.push("/login");
-      }, 2000);
-    } else {
-      const errorMessage = await response.json();
-      setMessage(errorMessage.message || "An error occurred.");
-      toast.error(message);
-    }
+    setIsSubmitting(false);
   };
 
   return (
     <div className="w-full min-h-screen bg-pink-600 flex items-center">
       <div className="w-[60%] mx-auto flex flex-col md:flex-row bg-white">
-        <div className="flex justify-center overflow-hidden">
+        <div className="hidden md:flex justify-center overflow-hidden">
           <Image src="/desktop.jpg" alt="" width={1200} height={1200} />
         </div>
         <div className="w-full p-6 border rounded shadow">
@@ -170,8 +164,10 @@ export default function AddUser() {
             <button
               type="submit"
               className="w-full bg-custom-pink text-white py-2 px-4 rounded hover:bg-yellow-600"
+              disabled = {isSubmitting}
             >
               Submit
+              {addMutation.isPending && <p>Creating user...</p>}
             </button>
           </form>
         </div>

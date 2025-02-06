@@ -1,7 +1,7 @@
 "use client";
 
 import HeaderComponent from "@/components/common/header/header";
-import { UserInit } from "@/store";
+import { UserInit } from "@/stage-manage/user-storage";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
 import Link from "next/link";

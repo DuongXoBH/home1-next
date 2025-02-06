@@ -1,14 +1,22 @@
-import { UserInit } from "@/store";
+import { useOutsideClick } from "@/hooks/use-outside-click";
+import { UserInit } from "@/stage-manage/user-storage";
 import { useAtom } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function LoginButton() {
   const [user, setUser] = useAtom(UserInit);
   const [open, setOpen] = useState<boolean>(false);
+  const handleClickOutSide = useCallback(() => {
+    if (open) {
+      setOpen(false);
+    }
+  }, [open]);
+
+  const ref = useOutsideClick(handleClickOutSide);
   const route = useRouter();
   const logOut = () => {
     toast.success("Logout successful. Redirect to Login page");
@@ -20,7 +28,10 @@ export default function LoginButton() {
   };
   if (user) {
     return (
-      <div className="flex flex-col mt-9 md:mt-[41px] md:ml-4 relative">
+      <div
+        className="flex flex-col mt-9 md:mt-[41px] md:ml-4 relative"
+        ref={ref}
+      >
         <button
           onClick={() => {
             openUser();
@@ -30,7 +41,7 @@ export default function LoginButton() {
           <Image src="/user-icon.svg" alt="" width={45} height={45} />
         </button>
         <ul
-          className={`bg-inherit w-[300px] flex flex-col items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0 ${
+          className={`bg-sky-100 w-[300px] flex flex-col items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0  ${
             open ? "block" : "hidden"
           }`}
         >
@@ -52,12 +63,12 @@ export default function LoginButton() {
             </button>
           </li>
         </ul>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     );
   }
   return (
-    <div className="flex flex-col mt-9 md:mt-[41px] md:ml-4 relative">
+    <div className="flex flex-col mt-9 md:mt-[41px] md:ml-4 relative" ref={ref}>
       <button
         onClick={() => {
           openUser();
@@ -67,7 +78,7 @@ export default function LoginButton() {
         <Image src="/user-icon.svg" alt="" width={45} height={45} />
       </button>
       <ul
-        className={`bg-inherit w-[200px] flex flex-row justify-center items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0 ${
+        className={`bg-inherit w-[200px] flex flex-row justify-center items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0 bg-sky-100 ${
           open ? "block" : "hidden"
         }`}
       >
@@ -78,7 +89,7 @@ export default function LoginButton() {
           <Link href="/register">Register </Link>
         </li>
       </ul>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }

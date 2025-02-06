@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 // import { UserInit } from "@/store";
-import { useFetchUserbyIdApi, useUpdateUser, } from "@/api";
+import { useFetchUserbyIdApi, useUpdateUser, } from "@/api-hook/user";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First name is required"),

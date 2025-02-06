@@ -69,7 +69,7 @@ export default function BlogCardComponent() {
         </div>
       </div>
       {/* categories */}
-      <Card tittleText="Categories" contentClass="flex w-full flex-col pl-[49px] md:items-start md:mb-[36px]" childrent={
+      <Card tittleText="Categories" contentClass="flex w-full flex-col md:pl-[49px] md:items-start md:mb-[36px]" childrent={
         <>
           {CATEGORIES.map((element,index)=>(
               <p key={`categories-${index}`} className={`text-sm w-full text-center md:text-left h-[23px] mb-1 leading-[21px] font-normal tracking-[1.4px] text-custom-gray`}>{element.text}</p>

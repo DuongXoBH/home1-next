@@ -6,8 +6,8 @@ import {
   DialogPanel,
 } from "@headlessui/react";
 import { useAtom } from "jotai";
-import { deleteModal } from "@/store/user";
-import { useDeleteUser } from "@/api";
+import { deleteModal } from "@/stage-manage/user";
+import { useDeleteUser } from "@/api-hook/user";
 import { useState } from "react";
 
 export default function DeleteModal(props: { userId: string }) {
@@ -54,7 +54,7 @@ export default function DeleteModal(props: { userId: string }) {
           onClick={() => deleteUser()}
           className="w-full sm:w-auto rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
         >
-          Deactivate
+          Delete
           {deleteMutation.isPending && <span className="ml-2">Deleting User...</span>}
         </button>
       </div>

@@ -1,4 +1,5 @@
-import {  deleteModal } from "@/store/user";
+import { LoginFormInputs } from "@/components/pages/user/login";
+import {  deleteModal } from "@/stage-manage/user";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { toast } from "react-toastify";
@@ -44,6 +45,8 @@ async function updateUser(
     if (!response.ok) {
     throw new Error(result.message || "Fail");
   }
+  return result;
+
 }
 
 export function useUpdateUser() {
@@ -89,6 +92,8 @@ async function addUser(data: {
   if (!response.ok) {
     throw new Error(result.message)
   }
+  return result;
+
 }
 
 export function useAddUser() {
@@ -105,7 +110,7 @@ export function useAddUser() {
       };
     }) => addUser(data),
     onSuccess: () => {
-      toast.success("Success.Redirect to User Page");
+      toast.success("Success");
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
     onError: (error) => {
@@ -141,3 +146,29 @@ export function useDeleteUser(){
   });
   return mutation;
 }
+
+async function login(data :LoginFormInputs){
+  const response = await fetch(`https://home1-backend.onrender.com/login`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
+  const result = await response.json();
+  if(!response.ok){
+    throw new Error(result.message);
+  }
+  return result;
+  
+}
+
+export function useLogin(){
+  const mutation = useMutation({
+    mutationFn: ({data}:{data:LoginFormInputs}) => login(data),
+    onSuccess: () =>{},
+    onError: () => {
+      toast.error("Error: Invalid email or password. Please try again with the correct credentials.")
+    }
+  })
+  return mutation;
+}
+

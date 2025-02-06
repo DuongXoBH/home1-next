@@ -6,7 +6,7 @@ const FooterComponent = () => {
   return (
     <>
       <div
-        className={`w-full h-[705.34px] md:block bg-footer-background bg-no-repeat bg-top bg-cover pt-[214px]`}
+        className={`w-full h-[705.34px] md:block md:bg-footer-background bg-no-repeat bg-top md:pt-[214px]`}
       >
         <div
           className={`w-full flex flex-col p-4 md:p-0 text-[white] container bg-patrick-blue md:h-full md:bg-inherit`}

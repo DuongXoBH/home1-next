@@ -1,14 +1,19 @@
 "use client";
 
-import { useFetchUsersApi } from "@/api";
-import { UserInit } from "@/store";
+import { useFetchUsersApi } from "@/api-hook/user";
+import { UserInit } from "@/stage-manage/user-storage";
 import { useAtom, useAtomValue } from "jotai";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Link from "next/link";
 import EditModal from "../component/edit-modal";
-import { addModal, deleteModal, editModal, usersAtom } from "@/store/user";
+import {
+  addModal,
+  deleteModal,
+  editModal,
+  usersAtom,
+} from "@/stage-manage/user";
 import DeleteModal from "../component/delete-modal";
 import AddModal from "../component/add-modal";
 
@@ -69,13 +74,13 @@ export default function UsersList() {
   }
 
   return (
-    <div className="space-y-4 p-6 container w-full min-h-screen">
-      <div className="flex justify-between">
-        <h1 className="text-2xl font-bold">User List</h1>
+    <div className="p-6 container w-full md:min-h-screen">
+      <div className="flex justify-between items-center min-h-14 px-5 bg-sky-600">
+        <h1 className="text-2xl font-bold text-white">User Management</h1>
         <div>
           <button
             onClick={() => onEdit()}
-            className="w-40 h-10 border-2 rounded-xl bg-custom-pink"
+            className="w-40 h-10 border-2 bg-white font-semibold"
           >
             Add User
           </button>
@@ -86,39 +91,39 @@ export default function UsersList() {
           <thead>
             <tr className="bg-gray-100 border-b border-gray-300">
               <th className="px-4 py-2">Id</th>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Email</th>
-              <th className="px-4 py-2">Actions</th>
+              <th className="px-4 py-2 text-center">Email</th>
+              <th className="px-4 py-2 text-center">Name</th>
+              <th className="px-4 py-2 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users?.map((user: IUser) => (
               <tr key={user._id} className="border-b border-gray-200">
                 <td className="px-4 py-2">{user._id}</td>
-                <td className="px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
                 <td className="px-4 py-2">{user.email}</td>
-                <td className="px-4 py-2 flex flex-wrap gap-2 sm:gap-5">
-                  <Link href={`/user/${user._id}/update`}>
+                <td className="px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
+                <td className="px-4 py-2 flex flex-wrap justify-evenly sm:gap-5">
+                  {/*                   <Link href={`/user/${user._id}/update`}>
                     <button className="w-20 h-10 border-2 rounded-xl">
                       Update
                     </button>
-                  </Link>
+                  </Link> */}
                   <Link href={`/user/${user._id}`}>
                     <button className="w-20 h-10 border-2 rounded-xl">
                       Profile
                     </button>
                   </Link>
                   <button
-                    onClick={() => onDelete(user._id)}
-                    className="w-20 h-10 border-2 rounded-xl"
-                  >
-                    Delete
-                  </button>
-                  <button
                     onClick={() => onEdit(user._id)}
                     className="w-20 h-10 border-2 rounded-xl"
                   >
                     Edit
+                  </button>
+                  <button
+                    onClick={() => onDelete(user._id)}
+                    className="w-20 h-10 border-2 rounded-xl"
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>
@@ -128,7 +133,7 @@ export default function UsersList() {
       </div>
 
       {/* Navigation */}
-      <nav
+      {/* <nav
         aria-label="Page navigation example"
         className="mt-10 flex justify-center"
       >
@@ -221,7 +226,7 @@ export default function UsersList() {
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> */}
       {/* Modal */}
       <AddModal />
       <EditModal userId={selectedUserId} />

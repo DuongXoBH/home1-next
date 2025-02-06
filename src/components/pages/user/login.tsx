@@ -6,38 +6,39 @@ import { useState } from "react";
 import * as yup from "yup";
 import Image from "next/image";
 import { useSetAtom } from "jotai";
-import { UserInit } from "@/store";
+import { UserInit } from "@/stage-manage/user-storage";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useLogin } from "@/api-hook/user";
 export interface LoginFormInputs {
   email: string;
   password: string;
 }
-const schema  = yup.object().shape({
+const schema = yup.object().shape({
   email: yup
-      .string()
-      .required("Email is required")
-      .matches(
-        /^[a-zA-Z0-9.-_]+@gmail\.com$/,
-        'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
-      ),
-    password: yup
-      .string()
-      .required("Password is required")
-      .matches(
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        "Password must be at least 8 characters long and include one uppercase, one lowercase, one number, and one special character"
-      ), 
+    .string()
+    .required("Email is required")
+    .matches(
+      /^[a-zA-Z0-9.-_]+@gmail\.com$/,
+      'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
+    ),
+  password: yup
+    .string()
+    .required("Password is required")
+    .matches(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      "Password must be at least 8 characters long and include one uppercase, one lowercase, one number, and one special character"
+    ),
 });
 
 export default function LoginPage() {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>({ resolver: yupResolver(schema) });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const loginMutation = useLogin();
   const route = useRouter();
   const setUser = useSetAtom(UserInit);
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
@@ -45,34 +46,23 @@ export default function LoginPage() {
       return;
     }
     setIsSubmitting(true);
-    try {
-      const response = await fetch(`https://home1-backend.onrender.com/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    await loginMutation.mutate(
+      { data },
+      {
+        onSuccess(data) {
+          setUser(data.data)
+          route.push('/');
+          toast.success("Login success");
         },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-      if (!response.ok) {
-        toast.error(result.message);
-        setIsSubmitting(false);
-        return;
       }
-      setUser(result.data);
-        toast.success("Login successful!");
-        route.push("/");
-    } catch (error) {
-      console.log("🚀 ~ constonSubmit:SubmitHandler<LoginFormInputs>= ~ error:", error)
-      toast.error("Failed. Try again");
-    }
+    );
+
     setIsSubmitting(false);
   };
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">
-        <div className="overflow-hidden flex justify-center">
+        <div className="overflow-hidden hidden md:flex justify-center">
           <Image src="/login-images.jpg" alt="" width={1200} height={1200} />
         </div>
         <div className="w-full p-6 border rounded shadow flex flex-col justify-center">
@@ -116,11 +106,11 @@ export default function LoginPage() {
               disabled={isSubmitting}
             >
               Login
+              {loginMutation.isPending && <p>Submiting....</p>}
             </button>
           </form>
         </div>
       </div>
     </div>
-    
   );
 }
