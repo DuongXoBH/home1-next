@@ -62,7 +62,6 @@ export default function LoginPage() {
   };
   useEffect(()=>{
     if (user) {
-      console.log(isSubmitting);
       toast("You are logged in");
       setIsSubmitting(true)
     }

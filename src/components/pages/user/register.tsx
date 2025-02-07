@@ -66,7 +66,7 @@ export default function AddUser() {
     if(isSubmitting) return;
     setIsSubmitting(true);
     await addMutation.mutate({data},{
-      onSuccess: (data)=>{
+      onSuccess: ()=>{
         route.push("/login")
       }
     });
