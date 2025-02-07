@@ -151,8 +151,7 @@ export default function AddModal() {
             className="w-full bg-custom-pink text-white py-2 px-4 rounded hover:bg-yellow-600"
             disabled={isSubmitting}
           >
-            Submit
-            {addMutation.isPending && <p>Creating post...</p>}
+            {addMutation.isPending ? <p>Creating post...</p> : <p>Submit</p>}
           </button>
         </form>
       </div>

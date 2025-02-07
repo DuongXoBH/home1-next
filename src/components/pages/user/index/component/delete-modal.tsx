@@ -54,8 +54,7 @@ export default function DeleteModal(props: { userId: string }) {
           onClick={() => deleteUser()}
           className="w-full sm:w-auto rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
         >
-          Delete
-          {deleteMutation.isPending && <span className="ml-2">Deleting User...</span>}
+          {deleteMutation.isPending ? <p className="ml-2">Deleting User...</p> : <p>Delete</p>}
         </button>
       </div>
     </DialogPanel>

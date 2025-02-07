@@ -3,7 +3,7 @@
 import { useFetchUsersApi } from "@/api-hook/user";
 import { UserInit } from "@/stage-manage/user-storage";
 import { useAtom, useAtomValue } from "jotai";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Link from "next/link";
@@ -27,6 +27,7 @@ export interface IUser {
 export default function UsersList() {
   const user = useAtomValue(UserInit);
   const route = useRouter();
+  const pathName = usePathname();
   const [users, setUsers] = useAtom(usersAtom);
   const [isDeleteModal, setIsDeleteModal] = useAtom(deleteModal);
   const [isEditModal, setIsEditModal] = useAtom(editModal);
@@ -41,15 +42,16 @@ export default function UsersList() {
     const checkTimeout = setTimeout(() => {
       if (user === null) {
         toast.error("You need login to see this.");
+        console.log(pathName);
         const timeout = setTimeout(() => {
-          route.push("/login");
+          if (pathName) route.push(`login?next=${pathName}`);
         }, 5000);
 
         return () => clearTimeout(timeout);
       }
     }, 1000);
     return () => clearTimeout(checkTimeout);
-  }, [user, route]);
+  }, [user, route, pathName]);
 
   // funtion to open delete modal
   const onDelete = (id: string) => {
@@ -117,7 +119,7 @@ export default function UsersList() {
                     onClick={() => onEdit(user._id)}
                     className="w-20 h-10 border-2 rounded-xl"
                   >
-                    Edit
+                    Update
                   </button>
                   <button
                     onClick={() => onDelete(user._id)}

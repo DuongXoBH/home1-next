@@ -166,7 +166,8 @@ async function login(data :LoginFormInputs){
 export function useLogin(){
   const mutation = useMutation({
     mutationFn: ({data}:{data:LoginFormInputs}) => login(data),
-    onSuccess: () =>{},
+    onSuccess: () =>{
+    },
     onError: () => {
       toast.error("Error: Invalid email or password. Please try again with the correct credentials.")
     }

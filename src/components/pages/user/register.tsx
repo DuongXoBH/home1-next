@@ -5,7 +5,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAddUser } from "@/api-hook/user";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAtomValue } from "jotai";
+import { UserInit } from "@/stage-manage/user-storage";
+import { toast } from "react-toastify";
 
 export interface ResisterFormInput {
   firstName: string;
@@ -47,18 +50,23 @@ export default function AddUser() {
     handleSubmit,
     formState: { errors },
   } = useForm<ResisterFormInput>({ resolver: yupResolver(schema) });
-
+  const user = useAtomValue(UserInit);
   const [isSubmitting,setIsSubmitting] = useState(false);
   const route = useRouter();
   const addMutation = useAddUser();
 
+  useEffect(()=>{
+    if(user){
+      toast("You already have an account. Please logout to continue");
+      route.push("/");
+    }
+  },[route,user])
+
   const onSubmit: SubmitHandler<ResisterFormInput> = async (data) => {
     if(isSubmitting) return;
-    console.log("🚀 ~ constonSubmit:SubmitHandler<ResisterFormInput>= ~ isSubmitting:", isSubmitting)
     setIsSubmitting(true);
     await addMutation.mutate({data},{
       onSuccess: (data)=>{
-        console.log("🚀 ~ constonSubmit:SubmitHandler<ResisterFormInput>= ~ data:", data);
         route.push("/login")
       }
     });
@@ -166,8 +174,7 @@ export default function AddUser() {
               className="w-full bg-custom-pink text-white py-2 px-4 rounded hover:bg-yellow-600"
               disabled = {isSubmitting}
             >
-              Submit
-              {addMutation.isPending && <p>Creating user...</p>}
+              {addMutation.isPending ? <p>Creating user...</p> : <p>Submit</p>}
             </button>
           </form>
         </div>

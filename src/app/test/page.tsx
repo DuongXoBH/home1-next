@@ -1,34 +1,50 @@
+'use client'
 
-"use client"
-import { useState, useEffect } from 'react';
+import Link from "next/link"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useCallback } from "react"
 
-function MyComponent() {
-  const [, setData] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Kiểm tra xem đang chạy trên client-side
-    if (typeof window !== 'undefined') {
-      // Lấy dữ liệu từ sessionStorage
-      const storedData = sessionStorage.getItem('myData');
-      if (storedData) {
-        setData(JSON.parse(storedData));
-      }
-    }
-  }, []);
-
-  const handleSave = () => {
-    const newData = "Duong van Xo"
-    setData(newData);
-    // Lưu dữ liệu vào sessionStorage
-    sessionStorage.setItem('myData', JSON.stringify(newData));
-  };
-
+ 
+export default function ExampleClientComponent() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+ 
+  // Get a new searchParams string by merging the current
+  // searchParams with a provided key/value pair
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+ 
+      return params.toString()
+    },
+    [searchParams]
+  )
+ 
   return (
-    <div className='w-96 mt-20 flex justify-center'>
-      {/* Hiển thị dữ liệu */}
-      <button className='border-1 rounded-sm bg-red-500' onClick={handleSave}>Lưu dữ liệu</button>
-    </div>
-  );
+    <>
+      <p>Sort By</p>
+ 
+      {/* using useRouter */}
+      <button
+        onClick={() => {
+          // <pathname>?sort=asc
+          router.push(pathname + '?' + createQueryString('sort', 'asc'))
+        }}
+      >
+        ASC
+      </button>
+ 
+      {/* using <Link> */}
+      <Link
+        href={
+          // <pathname>?sort=desc
+          pathname + '?' + createQueryString('sort', 'desc')
+        }
+      >
+        DESC
+      </Link>
+    </>
+  )
 }
-
-export default MyComponent;

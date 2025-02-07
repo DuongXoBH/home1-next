@@ -4,11 +4,8 @@ import AboutComponent from "@/components/pages/about/about/about";
 import BusinessSloganComponent from "@/components/pages/about/business-slogan/business-slogan";
 import ClientComponent from "@/components/pages/about/clients/clients";
 import ProfessionalTeamComponent from "@/components/common/professional-team/professional-team";
-// import { useAtomValue } from "jotai";
-// import { UserInit } from "@/store";
 
 export default function About() {
-  // const user = useAtomValue(UserInit);
   return (
     <div>
       <AboutComponent />

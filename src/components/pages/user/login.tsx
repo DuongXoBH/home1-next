@@ -1,11 +1,11 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import * as yup from "yup";
 import Image from "next/image";
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { UserInit } from "@/stage-manage/user-storage";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -32,6 +32,9 @@ const schema = yup.object().shape({
 });
 
 export default function LoginPage() {
+  const [user,setUser] = useAtom(UserInit);
+  const route = useRouter();
+  const nextPath = useSearchParams().get("next");
   const {
     register,
     handleSubmit,
@@ -39,8 +42,6 @@ export default function LoginPage() {
   } = useForm<LoginFormInputs>({ resolver: yupResolver(schema) });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const loginMutation = useLogin();
-  const route = useRouter();
-  const [user,setUser] = useAtom(UserInit);
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     if (isSubmitting) {
       return;
@@ -50,19 +51,22 @@ export default function LoginPage() {
       { data },
       {
         onSuccess(data) {
-          setUser(data.data)
-          route.push('/');
           toast.success("Login success");
+          if(nextPath) route.push(nextPath)
+          setUser(data.data);
+        return null;
         },
       }
     );
-
     setIsSubmitting(false);
   };
-  if (user) {
-    console.log("🚀 ~ LoginPage ~ user:", user)
-    // route.push('/');
-  }
+  useEffect(()=>{
+    if (user) {
+      console.log(isSubmitting);
+      toast("You are logged in");
+      setIsSubmitting(true)
+    }
+  },[user, route])
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">
@@ -109,8 +113,18 @@ export default function LoginPage() {
               className="w-full bg-lime-700 text-white py-2 px-4 rounded hover:bg-red-600 disabled:bg-slate-700"
               disabled={isSubmitting}
             >
-              Login
-              {loginMutation.isPending && <p>Submiting....</p>}
+              
+              {loginMutation.isPending ? <p>Submiting....</p> : <p>Login</p>}
+              
+            </button>
+            <button
+              type="button"
+              className="w-full bg-slate-700 py-2 px-4 rounded text-white hover:bg-rose-500"
+              onClick={()=>{
+                route.back()
+              }}
+            >
+              Back
             </button>
           </form>
         </div>

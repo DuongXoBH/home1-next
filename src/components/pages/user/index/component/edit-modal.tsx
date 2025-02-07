@@ -105,8 +105,7 @@ export default function EditModal(props: { userId: string }) {
               className="w-full sm:w-1/4 bg-custom-pink text-white py-2 px-4 rounded hover:bg-yellow-600"
               disabled={isSubmitting}
             >
-              Submit
-              {updateMutation.isPending && <p>Updating user...</p>}
+              {updateMutation.isPending ? <p>Updating user...</p> : <p>Update</p>}
             </button>
           </div>
         </form>

@@ -3,13 +3,14 @@ import { UserInit } from "@/stage-manage/user-storage";
 import { useAtom } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function LoginButton() {
   const [user, setUser] = useAtom(UserInit);
   const [open, setOpen] = useState<boolean>(false);
+  const pathName = usePathname();
   const handleClickOutSide = useCallback(() => {
     if (open) {
       setOpen(false);
@@ -19,9 +20,9 @@ export default function LoginButton() {
   const ref = useOutsideClick(handleClickOutSide);
   const route = useRouter();
   const logOut = () => {
-    toast.success("Logout. Redirect to Login page");
+    toast.success("Logout. Redirect to Home Page");
     setUser(null);
-    route.push("/login");
+    route.push(`/`);
   };
   const openUser = () => {
     setOpen(!open);
@@ -63,7 +64,6 @@ export default function LoginButton() {
             </button>
           </li>
         </ul>
-        <ToastContainer />
       </div>
     );
   }
@@ -83,13 +83,12 @@ export default function LoginButton() {
         }`}
       >
         <li className="md:mt-2 text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue">
-          <Link href="/login">Login / </Link>
+          <Link href={`/login?next=${pathName}`}>Login / </Link>
         </li>
         <li className="md:mt-2 text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue">
-          <Link href="/register">Register </Link>
+          <Link href="/auth/register">Register </Link>
         </li>
       </ul>
-      <ToastContainer />
     </div>
   );
 }
