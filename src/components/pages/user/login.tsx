@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import * as yup from "yup";
 import Image from "next/image";
-import { useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { UserInit } from "@/stage-manage/user-storage";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -40,7 +40,7 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const loginMutation = useLogin();
   const route = useRouter();
-  const setUser = useSetAtom(UserInit);
+  const [user,setUser] = useAtom(UserInit);
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     if (isSubmitting) {
       return;
@@ -59,6 +59,10 @@ export default function LoginPage() {
 
     setIsSubmitting(false);
   };
+  if (user) {
+    console.log("🚀 ~ LoginPage ~ user:", user)
+    // route.push('/');
+  }
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">

@@ -19,7 +19,7 @@ export default function LoginButton() {
   const ref = useOutsideClick(handleClickOutSide);
   const route = useRouter();
   const logOut = () => {
-    toast.success("Logout successful. Redirect to Login page");
+    toast.success("Logout. Redirect to Login page");
     setUser(null);
     route.push("/login");
   };
