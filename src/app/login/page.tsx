@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 export default function Login(){
   return (
-    <Suspense >
+    <Suspense fallback={<h1>Loading...</h1>}>
       <LoginPage/>
     </Suspense >
   )

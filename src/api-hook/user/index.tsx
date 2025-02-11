@@ -4,13 +4,13 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { toast } from "react-toastify";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+// const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export function useFetchUsersApi() {
   const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const response = await fetch(` ${apiUrl}/ `);
+      const response = await fetch(` https://home1-backend.onrender.com/ `);
       const result = await response.json();
       return result;
     },
@@ -22,7 +22,7 @@ export function useFetchUserbyIdApi(id: string) {
   const { data } = useQuery({
     queryKey: ["user", id],
     queryFn: async () => {
-      const response = await fetch(`${apiUrl}/${id}`);
+      const response = await fetch(`https://home1-backend.onrender.com/${id}`);
       const result = await response.json();
       return result;
     },
@@ -38,7 +38,7 @@ async function updateUser(
     lastName: string;
   }
 ) {
-  const response = await fetch(`${apiUrl}/${id}`, {
+  const response = await fetch(`https://home1-backend.onrender.com/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -83,7 +83,7 @@ async function addUser(data: {
   email: string;
   password: string;
 }) {
-  const response = await fetch(`${apiUrl}/`, {
+  const response = await fetch(`https://home1-backend.onrender.com/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -123,7 +123,7 @@ export function useAddUser() {
 }
 
 async function deleteUser(id: string) {
-  const response = await fetch(`${apiUrl}/${id}`, {
+  const response = await fetch(`https://home1-backend.onrender.com/${id}`, {
     method: "DELETE",
   });
 
@@ -150,7 +150,7 @@ export function useDeleteUser(){
 }
 
 async function login(data :LoginFormInputs){
-  const response = await fetch(`${apiUrl}/login`, {
+  const response = await fetch(`https://home1-backend.onrender.com/login`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data),

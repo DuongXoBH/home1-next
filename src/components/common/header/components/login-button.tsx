@@ -20,7 +20,7 @@ export default function LoginButton() {
   const ref = useOutsideClick(handleClickOutSide);
   const route = useRouter();
   const logOut = () => {
-    toast.success("Logout. Redirect to Home Page");
+    toast.success("Logout");
     setUser(null);
     route.push(`/`);
   };
@@ -30,7 +30,7 @@ export default function LoginButton() {
   if (user) {
     return (
       <div
-        className="flex flex-col mt-9 md:mt-[41px] md:ml-4 relative"
+        className="flex flex-col mt-9 md:mt-[41px] md:ml-4 absolute top-0 right-16 md:right-20"
         ref={ref}
       >
         <button
@@ -68,7 +68,10 @@ export default function LoginButton() {
     );
   }
   return (
-    <div className="flex flex-col mt-9 md:mt-[41px] md:ml-4 relative" ref={ref}>
+    <div
+      className="flex flex-col mt-9 md:mt-[41px] md:ml-4 absolute top-0 right-16 md:right-20"
+      ref={ref}
+    >
       <button
         onClick={() => {
           openUser();
