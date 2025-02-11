@@ -14,7 +14,7 @@ export default function Team() {
         nameClass="md:h-[57px]"
         descriptionText="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam."
         descriptionClass="md:h-[36px]"
-        maginTop="mt-[125px]"
+        maginTop="mt-[88px]"
         textClass=""
       />
       <div className="w-full h-[1533px] absolute bg-no-repeat bg-right-top z-[-1] top-[229px] bg-team-bubble-background"></div>

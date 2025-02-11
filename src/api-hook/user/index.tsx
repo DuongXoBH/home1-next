@@ -66,7 +66,7 @@ export function useUpdateUser() {
       };
     }) => updateUser(id, data),
     onSuccess: () => {
-      toast.success("User's information is changed!");
+      toast.success("User's information has changed!");
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
     onError: (error) => {
@@ -153,7 +153,7 @@ async function login(data :LoginFormInputs){
   const response = await fetch(`${apiUrl}/login`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   });
   const result = await response.json();
   if(!response.ok){

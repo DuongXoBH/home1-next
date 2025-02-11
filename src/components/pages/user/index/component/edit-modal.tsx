@@ -6,7 +6,7 @@ import {
   DialogPanel,
 } from "@headlessui/react";
 import { useAtom } from "jotai";
-import { editModal } from "@/stage-manage/user";
+import { editModal} from "@/stage-manage/user";
 import { updateSchema } from "@/constants/pages/user/form-validate";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UpdateFormInput } from "@/app/(app)/user/[id]/update/page";
@@ -16,8 +16,8 @@ import { useEffect, useState } from "react";
 
 export default function EditModal(props: { userId: string }) {
   const [open, setOpen] = useAtom(editModal);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   // const users = useAtomValue(usersAtom);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,

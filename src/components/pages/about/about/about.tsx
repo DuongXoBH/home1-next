@@ -3,7 +3,7 @@ import Image from "next/image";
 function AboutComponent() {
   return (
     <>
-      <div className="w-full container flex flex-col p-4 md:p-0 mt-10 md:mt-[125px]">
+      <div className="w-full container flex flex-col p-4 md:p-0 mt-10 md:mt-[88px]">
         <div className="flex flex-col items-center md:items-start">
           <p className="w-full md:w-[50px] md:h-5 text-xs md:text-base font-semibold md:leading-5 text-center md:text-left text-custom-pink">
             About

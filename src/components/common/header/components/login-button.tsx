@@ -86,7 +86,7 @@ export default function LoginButton() {
           <Link href={`/login?next=${pathName}`}>Login / </Link>
         </li>
         <li className="md:mt-2 text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue">
-          <Link href="/auth/register">Register </Link>
+          <Link href="/register">Register </Link>
         </li>
       </ul>
     </div>

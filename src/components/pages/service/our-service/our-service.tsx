@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function OurServiceComponent() {
   return (
     <div className="w-full md:h-[862px] bg-[url(/service-images/service-background.svg)] bg-no-repeat bg-center">
-      <div className="container px-4 md:p-0 md:mt-[125px] flex flex-col items-center">
+      <div className="container px-4 md:p-0 md:mt-[88px] flex flex-col items-center">
         <div className="w-full md:w-[680px] flex flex-col items-center font-semibold text-center">
           <p className="w-40 h-5 text-xs md:text-base md:leading-5 text-custom-pink">
             Our Services

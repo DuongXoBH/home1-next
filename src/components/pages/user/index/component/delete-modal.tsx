@@ -9,16 +9,26 @@ import { useAtom } from "jotai";
 import { deleteModal } from "@/stage-manage/user";
 import { useDeleteUser } from "@/api-hook/user";
 import { useState } from "react";
+import { UserInit } from "@/stage-manage/user-storage";
+import { toast } from "react-toastify";
 
 export default function DeleteModal(props: { userId: string }) {
   const [open, setOpen] = useAtom(deleteModal);
+  const [user,setUser] =useAtom(UserInit);
   const [isSubmitting,setIsSubmitting] = useState(false);
   const deleteMutation = useDeleteUser();
   const deleteUser = async () => {
     if(isSubmitting) return;
     setIsSubmitting(true);
     const id = props.userId;
-    await deleteMutation.mutateAsync({id});
+    await deleteMutation.mutate({id},{
+      onSuccess(){
+        if (id === user?._id) {
+          toast('Logout');
+          setUser(null);
+        }
+      }
+    });
     setIsSubmitting(false);
   };
 

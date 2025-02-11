@@ -4,7 +4,7 @@ function Home1BannerComponent() {
   return (
     <>
       <div className="w-full h-[1000px] absolute top-0 bg-no-repeat -z-10 bg-header-backround"></div>
-      <div className="w-full mt-10 md:mt-[159px] mb-0 container p-4 md:p-0">
+      <div className="w-full mt-10 md:mt-[123px] mb-0 container p-4 md:p-0">
         <div className="w-full flex flex-col md:pl-10 md:flex-row">
           <div className="w-full md:w-[520px] flex flex-col items-center md:items-start md:text-left pt-[56px] px-0">
             <p className="w-full md:w-[430px] md:h-[128px] text-3xl md:text-5xl font-semibold m-0 text-center md:text-left md:leading-[60px] tracking-[1px] text-oxford-blue">

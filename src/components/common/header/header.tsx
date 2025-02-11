@@ -5,9 +5,12 @@ import { useCallback, useState } from "react";
 import Link from "next/link";
 import LoginButton from "./components/login-button";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { usePathname } from "next/navigation";
+import classNames from "classnames";
 
 function HeaderComponent() {
   const [isActive, setIsActive] = useState(false);
+  const pathName = usePathname();
   const changeButton = () => {
     setIsActive(!isActive);
   };
@@ -46,7 +49,10 @@ function HeaderComponent() {
             <ul className="flex flex-col md:flex-row items-center md:items-center gap-[47px]">
               <li className="flex">
                 <Link
-                  className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue"
+                  className={classNames(
+                    "text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue",
+                    { "text-oxford-blue": pathName === "/" }
+                  )}
                   href={`/`}
                 >
                   Home
@@ -82,9 +88,12 @@ function HeaderComponent() {
           </button>
         </div>
         {/* Login Button */}
-        <LoginButton/>
+        <LoginButton />
       </div>
-      <a href="#top" className="hidden md:block sticky top-[90%] left-[90%] w-[36]">
+      <a
+        href="#top"
+        className="hidden md:block sticky top-[90%] left-[90%] w-[36]"
+      >
         <Image
           src="/images/to-top-button.svg"
           className=""

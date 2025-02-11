@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function IntroduceComponent() {
   return (
-    <div className="w-full md:mt-[125px] flex flex-col px-4 md:p-0 container">
+    <div className="w-full mt-[90px] flex flex-col px-4 md:p-0 container">
       {/* content */}
       <TextBoxComponent
         divClass="w-full md:w-[1120px] md:h-[136px] mr-5 flex-col md:flex-row md:justify-between md:items-center"

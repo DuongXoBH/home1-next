@@ -51,8 +51,8 @@ export default function LoginPage() {
       { data },
       {
         onSuccess(data) {
-          toast.success("Login success");
           if(nextPath) route.push(nextPath)
+          else route.push('/')
           setUser(data.data);
         return null;
         },
@@ -62,10 +62,10 @@ export default function LoginPage() {
   };
   useEffect(()=>{
     if (user) {
-      toast("You are logged in");
+      toast("You have logged in");
       setIsSubmitting(true)
     }
-  },[user, route])
+  },[user])
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">
