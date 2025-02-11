@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import * as yup from "yup";
 import Image from "next/image";
@@ -32,11 +32,14 @@ const schema = yup.object().shape({
 });
 
 export default function LoginPage() {
-  const [user, setUser] = useAtom(UserInit);
+  const [user,setUser] = useAtom(UserInit);
+  const [nextPath,setNextPath] = useState("/");
   const route = useRouter();
-  // const searchParams = useSearchParams();
-  // const params = typeof searchParams === "function" ? searchParams : new URLSearchParams();
-  // const nextPath = params.get("next") ?? "/";
+  const searchParams = useSearchParams();
+useEffect(()=>{
+  const nextPathURL = searchParams.get("next") ?? "/";
+  setNextPath(nextPathURL);
+},[searchParams])
   const {
     register,
     handleSubmit,
@@ -53,20 +56,20 @@ export default function LoginPage() {
       { data },
       {
         onSuccess(data) {
-          route.push("/");
+          route.push(nextPath)
           setUser(data.data);
-          return null;
+        return null;
         },
       }
     );
     setIsSubmitting(false);
   };
-  useEffect(() => {
+  useEffect(()=>{
     if (user) {
       toast("You have logged in");
-      setIsSubmitting(true);
+      setIsSubmitting(true)
     }
-  }, [user]);
+  },[user])
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">
@@ -113,13 +116,15 @@ export default function LoginPage() {
               className="w-full bg-lime-700 text-white py-2 px-4 rounded hover:bg-red-600 disabled:bg-slate-700"
               disabled={isSubmitting}
             >
+              
               {loginMutation.isPending ? <p>Submiting....</p> : <p>Login</p>}
+              
             </button>
             <button
               type="button"
               className="w-full bg-slate-700 py-2 px-4 rounded text-white hover:bg-rose-500"
-              onClick={() => {
-                route.back();
+              onClick={()=>{
+                route.back()
               }}
             >
               Back
