@@ -36,6 +36,8 @@ export default {
         'slider-background' : "url(/team-images/element-background.svg)",
         'blog-banner-background' : "url(/blog-images/blog-banner.svg)",
         'contact-backgound' : "url(/contact-images/contact-background.svg)",
+        'home-2-banner-background' : "url(/home-2/background-slider.svg)",
+        'home-2-background' : "url(/home-2/background.png)",
       },
       boxShadow: {
         'custom-professional-team': '0px 25px 50px 25px rgba(246, 247, 255, 1)',
@@ -47,7 +49,7 @@ export default {
       container :{
         center : true,
         screens:{
-          "xl" : "1140px"
+          "1140px" : "1140px",
         }
       },
       

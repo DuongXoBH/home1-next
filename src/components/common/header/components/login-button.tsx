@@ -30,7 +30,7 @@ export default function LoginButton() {
   if (user) {
     return (
       <div
-        className="flex flex-col mt-9 md:mt-[41px] md:ml-4 absolute top-0 right-16 md:right-20"
+        className="flex flex-col mt-9 md:mt-[41px] md:ml-4 absolute top-0 right-16 md:right-10 2xl:right-56"
         ref={ref}
       >
         <button
@@ -42,17 +42,14 @@ export default function LoginButton() {
           <Image src="/user-icon.svg" alt="" width={45} height={45} />
         </button>
         <ul
-          className={`bg-sky-100 w-[300px] flex flex-col items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0  ${
+          className={`bg-sky-100 w-[300px] flex flex-col items-center md:bg-white absolute mt-6 md:top-[40px] border gap-1 right-0 ${
             open ? "block" : "hidden"
           }`}
         >
-          <li className="text-base font-semibold leading-[20px] text-left tracking-widest border-b-2 hover:text-oxford-blue active:text-oxford-blue mt-2">
-            Hello, {user.firstName} {user.lastName}
-          </li>
-          <li className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue mt-2">
+          <li className="text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue mt-2">
             <Link href={`/profile`}>My Profile</Link>
           </li>
-          <li className="text-custom-gray text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue mt-2">
+          <li className="text-base font-semibold leading-[20px] text-left tracking-widest hover:text-oxford-blue active:text-oxford-blue mt-2">
             <button
               onClick={() => {
                 logOut();
@@ -69,7 +66,7 @@ export default function LoginButton() {
   }
   return (
     <div
-      className="flex flex-col mt-9 md:mt-[41px] md:ml-4 absolute top-0 right-16 md:right-20"
+      className="flex flex-col mt-9 md:mt-[41px] md:ml-4 absolute top-0 right-16 md:right-10 2xl:right-56"
       ref={ref}
     >
       <button
@@ -81,7 +78,7 @@ export default function LoginButton() {
         <Image src="/user-icon.svg" alt="" width={45} height={45} />
       </button>
       <ul
-        className={`bg-inherit w-[200px] flex flex-row justify-center items-center md:bg-white absolute mt-12 md:top-[40px] border gap-1 right-0 bg-sky-100 ${
+        className={`bg-inherit w-[200px] flex flex-row justify-center items-center md:bg-white absolute mt-6 md:top-[40px] border gap-1 right-0 bg-sky-100 ${
           open ? "block" : "hidden"
         }`}
       >

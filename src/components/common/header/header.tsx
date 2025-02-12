@@ -25,7 +25,7 @@ function HeaderComponent() {
     <>
       <div >
         <div
-          className="w-full container flex z-10 px-4 md:px-0 md:z-0 justify-between"
+          className="w-full container relative flex z-10 px-4 md:px-0 md:z-0 justify-between"
           ref={ref}
           id="top"
         >
@@ -92,9 +92,9 @@ function HeaderComponent() {
         </div>
         <LoginButton />
       </div>
-      <a
+      <Link
         href="#top"
-        className="hidden md:block sticky top-[90%] left-[90%] w-[36]"
+        className="hidden md:block sticky top-[90%] left-[90%] w-[36px]"
       >
         <Image
           src="/images/to-top-button.svg"
@@ -103,7 +103,7 @@ function HeaderComponent() {
           height={36}
           alt=""
         />
-      </a>
+      </Link>
     </>
   );
 }
