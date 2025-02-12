@@ -13,7 +13,7 @@ export const SLIDES = [
             height={73}
           />
         </div>
-        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-5 tracking-[1.4px] font-normal text-custom-gray">
+        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-[21px] tracking-[1.43px] font-normal text-custom-gray">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
           metus tincidunt laoreet ultricies condimentum ac integer aliquam.
           Lorem diam dignissim amet fermentum elementum dui dui. Aliquam sem
@@ -42,12 +42,12 @@ export const SLIDES = [
             height={73}
           />
         </div>
-        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-5 tracking-[1.4px] font-normal text-custom-gray">
-          2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
+        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-[21px] tracking-[1.43px] font-normal text-custom-gray">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
           metus tincidunt laoreet ultricies condimentum ac integer aliquam.
           Lorem diam dignissim amet fermentum elementum dui dui. Aliquam sem
           elementum morbi imperdiet suscipit erat ut. Purus volutpat in turpis
-          gravida blandit.
+          gravida blandit. 2.
         </p>
         <Image
           className="mt-[36px]"
@@ -71,12 +71,12 @@ export const SLIDES = [
             height={73}
           />
         </div>
-        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-5 tracking-[1.4px] font-normal text-custom-gray">
-          3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
+        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-[21px] tracking-[1.43px] font-normal text-custom-gray">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
           metus tincidunt laoreet ultricies condimentum ac integer aliquam.
           Lorem diam dignissim amet fermentum elementum dui dui. Aliquam sem
           elementum morbi imperdiet suscipit erat ut. Purus volutpat in turpis
-          gravida blandit.
+          gravida blandit.3.
         </p>
         <Image
           className="mt-[36px]"

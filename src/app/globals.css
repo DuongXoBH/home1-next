@@ -1,6 +1,3 @@
-@import "swiper/css";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination";
 
 @tailwind base;
 @tailwind components;
@@ -10,15 +7,13 @@
   --background: #ffffff;
   --foreground: #171717;
   color-scheme: light only;
-
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
     --foreground: #171717;
-    color-scheme: light only
-
+    color-scheme: light only;
   }
 }
 html {
@@ -30,39 +25,42 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
-* ,*::before,*::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: Poppins, sans-serif !important;
   margin: 0;
   word-wrap: break-word;
   white-space: normal;
 }
-body button{
+body button {
   font-family: Poppins, sans-serif !important;
   cursor: pointer;
-  /* background-color: rgba(255, 255, 255, 1); */
 }
-form input, form textarea{
+form input,
+form textarea {
   font-family: Poppins, sans-serif !important;
 }
-body img{
+body img {
   font-family: Poppins, sans-serif !important;
 }
-ul{
-  padding-inline-start: 0;  
+ul {
+  padding-inline-start: 0;
 }
-ul li{
+ul li {
   list-style-type: none;
 }
-a {text-decoration: none;}
-/* .container{
-  max-width: 1140px;
-  margin: 0 auto;
-} */
-@media (prefers-reduced-motion: no-preference) {
+a {
+  text-decoration: none;
 }
 
-
+@media (prefers-reduced-motion: no-preference) {
+}
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}

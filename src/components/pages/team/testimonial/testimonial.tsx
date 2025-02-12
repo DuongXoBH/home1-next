@@ -7,7 +7,8 @@ import SliderComponent from "./component/slide";
 export default function TestimonialCopmponent() {
 
   return (
-    <div className="w-full container flex flex-col items-center px-4 md:px-0 mb-[62px] bg-slider-background">
+<div className="w-full bg-slider-background">
+<div className="w-full container flex flex-col items-center px-4 md:px-0 mb-[62px]">
       <TextBoxComponent
         divClass="w-full md:max-w-[680px] mt-[118px] flex flex-col items-center"
         tittleText="Our Testimonials"
@@ -20,5 +21,6 @@ export default function TestimonialCopmponent() {
       {/* <SlideComponent/> */}
       <SliderComponent slides={SLIDES} />
     </div>
+</div>
   );
 }

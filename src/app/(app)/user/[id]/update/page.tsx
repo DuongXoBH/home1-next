@@ -20,12 +20,7 @@ const schema = yup.object().shape({
       'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
     ),
 });
-// interface IUser {
-//   _id: string;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-// }
+
 export interface UpdateFormInput {
   firstName: string;
   lastName: string;
