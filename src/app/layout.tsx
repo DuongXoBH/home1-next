@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./jotai-providers";
 import { QueryClientProviders } from "./query-providers";
 import { ToastContainer } from "react-toastify";
+import Path from "./path";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <QueryClientProviders>
           <Providers>
             {children}
+            <Path />
             <ToastContainer />
           </Providers>
         </QueryClientProviders>

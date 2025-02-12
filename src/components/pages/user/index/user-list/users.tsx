@@ -33,6 +33,7 @@ export default function UsersList() {
   const [isEditModal, setIsEditModal] = useAtom(editModal);
   const [isAddModal, setIsAddModal] = useAtom(addModal);
   const [selectedUserId, setSelectedUserId] = useState<string>("");
+
   // Fetch users
   const userList = useFetchUsersApi().data;
   useEffect(()=>{

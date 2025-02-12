@@ -13,7 +13,7 @@ export const SLIDES = [
             height={73}
           />
         </div>
-        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-[21px] tracking-[1.43px] font-normal text-custom-gray">
+        <p className="w-full md:max-w-[544px] mt-5 md:mt-[44px] text-sm text-center leading-[21px] tracking-[1.4px] font-normal text-custom-gray">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
           metus tincidunt laoreet ultricies condimentum ac integer aliquam.
           Lorem diam dignissim amet fermentum elementum dui dui. Aliquam sem
@@ -42,7 +42,7 @@ export const SLIDES = [
             height={73}
           />
         </div>
-        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-[21px] tracking-[1.43px] font-normal text-custom-gray">
+        <p className="w-full md:max-w-[544px] mt-5 md:mt-[44px] text-sm text-center leading-[21px] tracking-[1.4px] font-normal text-custom-gray">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
           metus tincidunt laoreet ultricies condimentum ac integer aliquam.
           Lorem diam dignissim amet fermentum elementum dui dui. Aliquam sem
@@ -62,7 +62,7 @@ export const SLIDES = [
   {
     id: 3,
     content: (
-      <div className="w-[80%] md:w-full md:max-w-[580px] flex flex-col items-center">
+      <div className="w-[80%] md:w-full md:max-w-[580px] flex flex-col items-center overflow-scroll">
         <div className="w-[73px] h-[73px] rounded-full">
           <Image
             src="/team-images/slide-image.svg"
@@ -71,7 +71,7 @@ export const SLIDES = [
             height={73}
           />
         </div>
-        <p className="w-full md:max-w-[544px] mt-[44px] text-sm text-center leading-[21px] tracking-[1.43px] font-normal text-custom-gray">
+        <p className="w-full md:max-w-[544px] mt-5 md:mt-[44px] text-sm text-center leading-[21px] tracking-[1.4px] font-normal text-custom-gray">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
           metus tincidunt laoreet ultricies condimentum ac integer aliquam.
           Lorem diam dignissim amet fermentum elementum dui dui. Aliquam sem

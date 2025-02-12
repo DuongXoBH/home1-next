@@ -10,6 +10,7 @@ import { UserInit } from "@/stage-manage/user-storage";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from "@/api-hook/user";
+import { CurrentPathName } from "@/stage-manage/global";
 export interface LoginFormInputs {
   email: string;
   password: string;
@@ -34,6 +35,7 @@ const schema = yup.object().shape({
 export default function LoginPage() {
   const [user,setUser] = useAtom(UserInit);
   const [nextPath,setNextPath] = useState("/");
+  const [pathName,setPath] = useAtom(CurrentPathName);
   const route = useRouter();
   const searchParams = useSearchParams();
 useEffect(()=>{
@@ -56,7 +58,10 @@ useEffect(()=>{
       { data },
       {
         onSuccess(data) {
+          console.log(pathName);
+          setPath(nextPath);
           route.push(nextPath)
+          toast('Success')
           setUser(data.data);
         return null;
         },
@@ -65,11 +70,12 @@ useEffect(()=>{
     setIsSubmitting(false);
   };
   useEffect(()=>{
-    if (user) {
+    if (user && pathName === '/login') {
       toast("You have logged in");
-      setIsSubmitting(true)
+      setIsSubmitting(true);
+      route.push('/');      
     }
-  },[user])
+  },[user,pathName,route])
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">

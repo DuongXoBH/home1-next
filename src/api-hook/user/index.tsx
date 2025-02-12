@@ -10,7 +10,6 @@ export function useFetchUsersApi() {
   const { data, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      console.log(apiUrl);
       const response = await fetch(` ${apiUrl} `);
       const result = await response.json();
       return result;

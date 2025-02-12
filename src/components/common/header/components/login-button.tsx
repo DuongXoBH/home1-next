@@ -1,16 +1,17 @@
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { CurrentPathName } from "@/stage-manage/global";
 import { UserInit } from "@/stage-manage/user-storage";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "react-toastify";
 
 export default function LoginButton() {
   const [user, setUser] = useAtom(UserInit);
   const [open, setOpen] = useState<boolean>(false);
-  const pathName = usePathname();
+  const pathName = useAtomValue(CurrentPathName);
   const handleClickOutSide = useCallback(() => {
     if (open) {
       setOpen(false);
