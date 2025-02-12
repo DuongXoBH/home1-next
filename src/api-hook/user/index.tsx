@@ -23,7 +23,7 @@ export function useFetchUserbyIdApi(id: string) {
   const { data } = useQuery({
     queryKey: ["user", id],
     queryFn: async () => {
-      const response = await fetch(`${apiUrl}${id}`);
+      const response = await fetch(`${apiUrl}/${id}`);
       const result = await response.json();
       return result;
     },
@@ -39,7 +39,7 @@ async function updateUser(
     lastName: string;
   }
 ) {
-  const response = await fetch(`${apiUrl}${id}`, {
+  const response = await fetch(`${apiUrl}/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -124,7 +124,7 @@ export function useAddUser() {
 }
 
 async function deleteUser(id: string) {
-  const response = await fetch(`${apiUrl}${id}`, {
+  const response = await fetch(`${apiUrl}/${id}`, {
     method: "DELETE",
   });
 
@@ -151,7 +151,7 @@ export function useDeleteUser(){
 }
 
 async function login(data :LoginFormInputs){
-  const response = await fetch(`${apiUrl}login`, {
+  const response = await fetch(`${apiUrl}/login`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data),
