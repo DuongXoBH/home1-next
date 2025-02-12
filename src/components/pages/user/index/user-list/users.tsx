@@ -106,11 +106,7 @@ export default function UsersList() {
                 <td className="px-4 py-2">{user.email}</td>
                 <td className="px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
                 <td className="px-4 py-2 flex flex-wrap justify-evenly sm:gap-5">
-                  {/*                   <Link href={`/user/${user._id}/update`}>
-                    <button className="w-20 h-10 border-2 rounded-xl">
-                      Update
-                    </button>
-                  </Link> */}
+
                   <Link href={`/user/${user._id}`}>
                     <button className="w-20 h-10 border-2 rounded-xl">
                       Profile

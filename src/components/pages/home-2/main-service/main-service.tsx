@@ -3,7 +3,6 @@ import NameText from "@/components/common/name-text";
 import TittleText from "@/components/common/tittle-text";
 import { SERVICES } from "@/constants/pages/home-2/main-service";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function MainService(){
     return (
@@ -24,9 +23,6 @@ export default function MainService(){
                             <p className="w-full mt-3 max-w-[189px] text-sm font-normal tracking-widest text-center md:text-left text-custom-gray">
                                 {element.text}
                             </p>
-                            {/* <Link href={'#'} className="font-semibold text-sm leading-[17.5] ">
-                                Learn more
-                            </Link> */}
                         </div>
                     )
                 })}
