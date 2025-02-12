@@ -5,7 +5,7 @@ export interface IInputItem {
   text: string;
 }
 export interface IInput {
-  input: [IInputItem]
+  input: Array<IInputItem>;
   name: string;
   width: string;
 }
