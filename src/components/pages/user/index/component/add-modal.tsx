@@ -5,38 +5,13 @@ import { useAtom } from "jotai";
 import { addModal } from "@/stage-manage/user";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 import {  useState } from "react";
 import { ResisterFormInput } from "../../register";
 import { useAddUser } from "@/api-hook/user";
+import { createSchema } from "@/hook-form-schema/user";
 
-const schema = yup.object().shape({
-  firstName: yup.string().required("First name is required"),
-  lastName: yup.string().required("Last name is required"),
-  email: yup
-    .string()
-    .required("Email is required")
-    .matches(
-      /^[a-zA-Z0-9.-_]+@gmail\.com$/,
-      'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
-    ),
-  password: yup
-    .string()
-    .required("Password is required")
-    .matches(
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must be at least 8 characters long and include one uppercase, one lowercase, one number, and one special character"
-    ),
-  confirmPassword: yup
-    .string()
-    .required("Password is required")
-    .matches(
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must be at least 8 characters long and include one uppercase, one lowercase, one number, and one special character"
-    )
-    .oneOf([yup.ref("password")], "Mismatched passwords"),
-});
+const schema = createSchema;
 
 export default function AddModal() {
   const [open, setOpen] = useAtom(addModal);

@@ -3,7 +3,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import * as yup from "yup";
 import Image from "next/image";
 import { useAtom } from "jotai";
 import { UserInit } from "@/stage-manage/user-storage";
@@ -11,26 +10,12 @@ import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from "@/api-hook/user";
 import { CurrentPathName } from "@/stage-manage/global";
+import { loginSchema } from "@/hook-form-schema/user";
 export interface LoginFormInputs {
   email: string;
   password: string;
 }
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .required("Email is required")
-    .matches(
-      /^[a-zA-Z0-9.-_]+@gmail\.com$/,
-      'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
-    ),
-  password: yup
-    .string()
-    .required("Password is required")
-    .matches(
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must be at least 8 characters long and include one uppercase, one lowercase, one number, and one special character"
-    ),
-});
+const schema = loginSchema;
 
 export default function LoginPage() {
   const [user,setUser] = useAtom(UserInit);

@@ -3,23 +3,12 @@ import Image from "next/image";
 import { use, useEffect } from "react";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-// import { UserInit } from "@/store";
 import { useFetchUserbyIdApi, useUpdateUser, } from "@/api-hook/user";
+import { updateSchema } from "@/hook-form-schema/user";
 
-const schema = yup.object().shape({
-  firstName: yup.string().required("First name is required"),
-  lastName: yup.string().required("Last name is required"),
-  email: yup
-    .string()
-    .required("Email is required")
-    .matches(
-      /^[a-zA-Z0-9.-_]+@gmail\.com$/,
-      'Email must be finish by "@gmail.com" .Enable include uppercase, lowercase, number and special character '
-    ),
-});
+const schema = updateSchema;
 
 export interface UpdateFormInput {
   firstName: string;
