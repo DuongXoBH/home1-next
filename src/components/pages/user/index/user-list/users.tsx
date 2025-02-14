@@ -8,14 +8,14 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import EditModal from "../component/edit-modal";
+import DeleteModal from "../component/delete-modal";
+import AddModal from "../component/add-modal";
 import {
   addModal,
   deleteModal,
   editModal,
   usersAtom,
 } from "@/stage-manage/user";
-import DeleteModal from "../component/delete-modal";
-import AddModal from "../component/add-modal";
 
 export interface IUser {
   _id: string;
@@ -136,6 +136,7 @@ export default function UsersList() {
       <AddModal />
       <EditModal userId={selectedUserId} />
       <DeleteModal userId={selectedUserId} />
+      {/* <img src="https://i.imgur.com/LDOO4Qs.jpg" alt="" width={200} height={100}></img> */}
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function TheBlog() {
                 {element.nameText}
               </p>
               <p className="w-full pl-[38px] mt-3 text-sm font-normal tracking-widest text-center md:text-left text-custom-gray">
-                {element.desctiptionText}
+                {element.descriptionText}
               </p>
             </div>
           );
