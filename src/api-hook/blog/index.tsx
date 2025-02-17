@@ -20,8 +20,12 @@ export function useFetchBlogApiByPage(page: number){
         queryFn: async()=>{
             const response = await fetch(`${apiUrl}/blog/page/${page}`);
             const result = await response.json();
-            return result;
+            return {
+                data: result.data,
+                itemsCount: result.itemsCount,
+            };
         }
     });
+
     return query.data;
 }

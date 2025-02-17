@@ -6,7 +6,7 @@ import {
   DialogPanel,
 } from "@headlessui/react";
 import { useAtom } from "jotai";
-import { editModal} from "@/stage-manage/user";
+import { editModal} from "@/state-manage/users";
 import { updateSchema } from "@/constants/pages/user/form-validate";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UpdateFormInput } from "@/app/(app)/user/[id]/update/page";

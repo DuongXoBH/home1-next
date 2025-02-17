@@ -1,6 +1,6 @@
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { CurrentPathName } from "@/stage-manage/global";
-import { UserInit } from "@/stage-manage/user-storage";
+import { CurrentPathName } from "@/state-manage/global";
+import { UserInit } from "@/state-manage/user-storage";
 import { useAtom, useAtomValue } from "jotai";
 import Image from "next/image";
 import Link from "next/link";

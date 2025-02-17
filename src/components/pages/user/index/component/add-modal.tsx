@@ -2,7 +2,7 @@
 
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { useAtom } from "jotai";
-import { addModal } from "@/stage-manage/user";
+import { addModal } from "@/state-manage/users";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 

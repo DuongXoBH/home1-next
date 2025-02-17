@@ -6,10 +6,10 @@ import {
   DialogPanel,
 } from "@headlessui/react";
 import { useAtom } from "jotai";
-import { deleteModal } from "@/stage-manage/user";
+import { deleteModal } from "@/state-manage/users";
 import { useDeleteUser } from "@/api-hook/user";
 import { useState } from "react";
-import { UserInit } from "@/stage-manage/user-storage";
+import { UserInit } from "@/state-manage/user-storage";
 import { toast } from "react-toastify";
 
 export default function DeleteModal(props: { userId: string }) {

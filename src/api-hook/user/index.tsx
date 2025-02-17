@@ -1,5 +1,5 @@
 import { LoginFormInputs } from "@/components/pages/user/login";
-import {  deleteModal } from "@/stage-manage/user";
+import {  deleteModal } from "@/state-manage/users";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { toast } from "react-toastify";
@@ -150,7 +150,7 @@ export function useDeleteUser(){
 }
 
 async function login(data :LoginFormInputs){
-  const response = await fetch(`${apiUrl}/login`, {
+  const response = await fetch(`${apiUrl}/user/login`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data),

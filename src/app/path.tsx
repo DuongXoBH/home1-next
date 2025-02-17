@@ -1,6 +1,6 @@
 "use client"
 
-import { CurrentPathName } from "@/stage-manage/global";
+import { CurrentPathName } from "@/state-manage/global";
 import { useSetAtom } from "jotai";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";

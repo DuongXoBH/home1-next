@@ -1,6 +1,6 @@
 "use client"
 
-import { UserInit } from "@/stage-manage/user-storage";
+import { UserInit } from "@/state-manage/user-storage";
 import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

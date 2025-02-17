@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAddUser } from "@/api-hook/user";
 import { useEffect, useState } from "react";
 import { useAtomValue } from "jotai";
-import { UserInit } from "@/stage-manage/user-storage";
+import { UserInit } from "@/state-manage/user-storage";
 import { toast } from "react-toastify";
 import { createSchema } from "@/hook-form-schema/user";
 

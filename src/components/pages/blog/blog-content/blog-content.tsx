@@ -16,15 +16,16 @@ interface IBlog {
 }
 
 export function BlogContentComponent() {
-  const maxGroup = Math.ceil(BLOGLIST.length / 3);
   const router = useRouter();
   const searchParams = useSearchParams();
   const paramPage = searchParams.get("page");
-
+  
   // Ép kiểu param thành số, nếu không có thì mặc định là 1
   const initialPage = paramPage ? Number(paramPage) : 1;
   const [page, setPage] = useState<number>(initialPage);
-  const blogs = useFetchBlogApiByPage(page);
+  const totalItems = useFetchBlogApiByPage(page)?.itemsCount;
+  const maxGroup = Math.ceil(totalItems/3);
+  const blogs = useFetchBlogApiByPage(page)?.data;
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= maxGroup) {

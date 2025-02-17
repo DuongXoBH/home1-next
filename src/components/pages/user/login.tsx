@@ -5,11 +5,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useAtom } from "jotai";
-import { UserInit } from "@/stage-manage/user-storage";
+import { UserInit } from "@/state-manage/user-storage";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from "@/api-hook/user";
-import { CurrentPathName } from "@/stage-manage/global";
+import { CurrentPathName } from "@/state-manage/global";
 import { loginSchema } from "@/hook-form-schema/user";
 export interface LoginFormInputs {
   email: string;
@@ -18,22 +18,22 @@ export interface LoginFormInputs {
 const schema = loginSchema;
 
 export default function LoginPage() {
-  const [user,setUser] = useAtom(UserInit);
-  const [nextPath,setNextPath] = useState("/");
-  const [pathName,setPath] = useAtom(CurrentPathName);
+  const [user, setUser] = useAtom(UserInit);
+  const [nextPath, setNextPath] = useState("/");
+  const [pathName, setPath] = useAtom(CurrentPathName);
   const route = useRouter();
   const searchParams = useSearchParams();
-useEffect(()=>{
-  const nextPathURL = searchParams.get("next") ?? "/";
-  setNextPath(nextPathURL);
-},[searchParams])
+  useEffect(() => {
+    const nextPathURL = searchParams.get("next") ?? "/";
+    setNextPath(nextPathURL);
+  }, [searchParams]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const loginMutation = useLogin();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>({ resolver: yupResolver(schema) });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const loginMutation = useLogin();
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     if (isSubmitting) {
       return;
@@ -45,22 +45,22 @@ useEffect(()=>{
         onSuccess(data) {
           console.log(pathName);
           setPath(nextPath);
-          route.push(nextPath)
-          toast('Success')
+          route.push(nextPath);
+          toast("Success");
           setUser(data.data);
-        return null;
+          return null;
         },
       }
     );
     setIsSubmitting(false);
   };
-  useEffect(()=>{
-    if (user && pathName === '/login') {
+  useEffect(() => {
+    if (user && pathName === "/login") {
       toast("You have logged in");
       setIsSubmitting(true);
-      route.push('/');      
+      route.push("/");
     }
-  },[user,pathName,route])
+  }, [user, pathName, route]);
   return (
     <div className="w-full min-h-screen bg-indigo-400 flex justify-center items-center">
       <div className="w-[60%] bg-white flex flex-col md:flex-row">
@@ -107,15 +107,13 @@ useEffect(()=>{
               className="w-full bg-lime-700 text-white py-2 px-4 rounded hover:bg-red-600 disabled:bg-slate-700"
               disabled={isSubmitting}
             >
-              
               {loginMutation.isPending ? <p>Submiting....</p> : <p>Login</p>}
-              
             </button>
             <button
               type="button"
               className="w-full bg-slate-700 py-2 px-4 rounded text-white hover:bg-rose-500"
-              onClick={()=>{
-                route.back()
+              onClick={() => {
+                route.back();
               }}
             >
               Back

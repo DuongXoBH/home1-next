@@ -3,7 +3,7 @@
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useAtom } from 'jotai'
-import { editModal } from '@/stage-manage/user'
+import { editModal } from '@/state-manage/users'
 
 export default function CustomModal() {
   const [open, setOpen] = useAtom(editModal)

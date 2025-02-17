@@ -1,7 +1,7 @@
 "use client";
 
 import { useFetchUsersApi } from "@/api-hook/user";
-import { UserInit } from "@/stage-manage/user-storage";
+import { UserInit } from "@/state-manage/user-storage";
 import { useAtom, useAtomValue } from "jotai";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ import {
   deleteModal,
   editModal,
   usersAtom,
-} from "@/stage-manage/user";
+} from "@/state-manage/users";
 
 export interface IUser {
   _id: string;
