@@ -2,7 +2,6 @@
 import { useFetchBlogApiByPage } from "@/api-hook/blog";
 import DescriptionText from "@/components/common/description-text";
 import NameText from "@/components/common/name-text";
-import { BLOGLIST } from "@/constants/pages/blog";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
